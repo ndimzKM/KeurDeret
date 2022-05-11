@@ -5,7 +5,6 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text>I have changed this file</Text>
-      <StatusBar style="auto" />
     </View>
   );
 }
