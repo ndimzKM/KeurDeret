@@ -3,9 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 export default function App() {
   return (
     <View style={styles.container}>
-      <View>
-        <Text>Text in two Views</Text>
-      </View>
+      <Text>It's not easy like that deh</Text>
     </View>
   );
 }
