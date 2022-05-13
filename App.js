@@ -4,7 +4,11 @@ import { StyleSheet, Text, View } from "react-native";
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>I have changed this file</Text>
+      <Text style={{ fontSize: 22, color: "#111" }}>
+        KeurDeret - Saving Lives
+      </Text>
+
+      <Text style={{ fontSize: 12, color: "#ddd" }}>Changes made by: Pho</Text>
     </View>
   );
 }
