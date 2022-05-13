@@ -1,17 +1,12 @@
 import { StyleSheet, Text, View } from "react-native";
 
-export default function App() {
+function Register() {
   return (
-    <View style={styles.container}>
-<<<<<<< HEAD
-      <Text>I have changed this here i amr file</Text>
-=======
-      <Text>It's not easy like that deh</Text>
->>>>>>> f6a1c4775eeafcba78d24b413581f519d038073f
+    <View>
+      <Text>Welcome to registration!</Text>
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -20,3 +15,5 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
+
+export default Register;
