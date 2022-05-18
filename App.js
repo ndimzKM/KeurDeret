@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>It's not easy like that deh</Text>
+      <Text>It is not easy like that deh</Text>
     </View>
   );
 }
