@@ -20,6 +20,7 @@ import Profile from "./screens/Profile";
 import Notification from "./screens/Notification";
 import Login from "./screens/Login";
 import Settings from "./screens/Settings";
+import { StatusBar } from "expo-status-bar";
 
 // store
 const store = legacy_createStore(
@@ -28,7 +29,7 @@ const store = legacy_createStore(
 );
 
 // stack navigator and screen
-const { Navigator, Screen } = createNativeStackNavigator();
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
@@ -38,16 +39,18 @@ export default function App() {
           style={{ flex: 1, paddingTop: Platform.OS === "android" ? 22 : 0 }}
         >
           <NavigationContainer>
-            <Navigator initialRouteName="Test">
-              <Screen name="Test" component={Test} />
-              <Screen name="Login" component={Login} />
-              <Screen name="Notification" component={Notification} />
-              <Screen name="Profile" component={Profile} />
-              <Screen name="DashBoard" component={DashBoard} />
-              <Screen name="Register" component={Register} />
-              <Screen name="Settings" component={Settings} />
-            </Navigator>
+            <Stack.Navigator initialRouteName="Notification">
+              <Stack.Screen name="Test" component={Test} />
+              <Stack.Screen name="Login" component={Login} />
+              <Stack.Screen name="Notification" component={Notification} />
+              <Stack.Screen name="Profile" component={Profile} />
+              <Stack.Screen name="DashBoard" component={DashBoard} />
+              <Stack.Screen name="Register" component={Register} />
+              <Stack.Screen name="Settings" component={Settings} />
+            </Stack.Navigator>
           </NavigationContainer>
+
+          <StatusBar barStyle='dark-content' />
         </SafeAreaView>
       </ApplicationProvider>
     </Provider>
