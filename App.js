@@ -1,5 +1,5 @@
 // external imports
-import { StyleSheet, Text, View, SafeAreaView } from "react-native";
+import { StyleSheet, Text, View, SafeAreaView, Platform } from "react-native";
 import { legacy_createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
@@ -22,7 +22,7 @@ export default function App() {
   return (
     <Provider store={store}>
       <ApplicationProvider {...eva} theme={eva.dark}>
-        <SafeAreaView style={{flex: 1, padding: 50}}>
+        <SafeAreaView style={{flex: 1, paddingTop: Platform.OS === 'android' ? 22 : 0}}>
           <Test />
         </SafeAreaView>
         {/* <View style={styles.container}>
