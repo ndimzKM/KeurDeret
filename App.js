@@ -1,9 +1,11 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, StatusBar } from "react-native";
+import Drawer from "./screens/Drawer";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>It is not easy like that deh</Text>
+      <Drawer />
+      <StatusBar />
     </View>
   );
 }
@@ -12,7 +14,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
   },
 });
