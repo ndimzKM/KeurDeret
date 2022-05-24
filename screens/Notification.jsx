@@ -1,4 +1,5 @@
 import { Text, View } from "react-native";
+
 function Notification() {
   return (
     <View>
@@ -6,4 +7,4 @@ function Notification() {
     </View>
   );
 }
-export default Notification();
+export default Notification;
