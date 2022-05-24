@@ -13,3 +13,5 @@ web-build/
 # macOS
 .DS_Store
 profileStack/
+package-lock.json
+yarn.lock
