@@ -30,7 +30,7 @@ function Register() {
               <Text
                 style={{
                   justifyContent: "center",
-                  color: "white",
+                  color: "#fff",
                   fontSize: 15,
                   fontWeight: "bold",
                 }}
