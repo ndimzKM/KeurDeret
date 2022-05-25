@@ -201,7 +201,7 @@ const Profile = ({ navigation }) => {
           />
           <View>
             <Text style={{ fontSize: 13, fontWeight: "bold", color: "gray" }}>
-              Google Location Code
+              Google Map Code
             </Text>
             <Text style={{ fontSize: 15, fontWeight: "bold" }}>F73R +J33</Text>
           </View>
