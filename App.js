@@ -1,18 +1,21 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, } from "react-native";
+import Register from "./screens/Register";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>It is not easy like that deh</Text>
-    </View>
+    <Register/>
+   
+   
   );
 }
 
-const styles = StyleSheet.create({
+const Styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+    paddingLeft: 50,
+    paddingRight: 50,
   },
 });
