@@ -39,7 +39,7 @@ export default function App() {
           style={{ flex: 1, paddingTop: Platform.OS === "android" ? 22 : 0 }}
         >
           <NavigationContainer>
-            <Stack.Navigator initialRouteName="Notification">
+            <Stack.Navigator initialRouteName="Register">
               <Stack.Screen name="Test" component={Test} />
               <Stack.Screen name="Login" component={Login} />
               <Stack.Screen name="Notification" component={Notification} />
@@ -50,7 +50,7 @@ export default function App() {
             </Stack.Navigator>
           </NavigationContainer>
 
-          <StatusBar barStyle='dark-content' />
+          <StatusBar barStyle="dark-content" />
         </SafeAreaView>
       </ApplicationProvider>
     </Provider>
