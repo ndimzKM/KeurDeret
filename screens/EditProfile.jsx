@@ -134,6 +134,7 @@ const styles = StyleSheet.create({
   header: {
     backgroundColor: "#880808",
     height: 150,
+    paddingTop: 5
   },
   avatar: {
     alignItems: "center",

@@ -1,5 +1,5 @@
 import {
-  SafeAreaView,
+  TouchableOpacity,
   Platform,
   StyleSheet,
   Image,
@@ -8,6 +8,7 @@ import {
   ScrollView,
 } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
+import { DrawerContentScrollView } from "@react-navigation/drawer";
 const Icon = ({ iconName, text }) => {
   return (
     <View style={{ paddingTop: 40, paddingLeft: 20 }}>
@@ -19,19 +20,19 @@ const Icon = ({ iconName, text }) => {
   );
 };
 
-const Drawer = () => {
+const DrawerContent = ({ props, navigation }) => {
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView styles={{ flex: 2 }}>
+    <DrawerContentScrollView style={styles.container} {...props}>
+      <ScrollView styles={{ flex: 1 }}>
         <View style={styles.top}>
-          <View style={{ position: "absolute", paddingLeft: 20 }}>
+          <TouchableOpacity onPress={() => navigation.closeDrawer()} style={{ position: "absolute", paddingLeft: 20 }}>
             <FontAwesome5 name="arrow-left" size={28} color="black" />
-          </View>
-          <View
+          </TouchableOpacity>
+          {/* <View
             style={{ flex: 2, justifyContent: "center", flexDirection: "row" }}
           >
             <Text style={{ fontSize: 20, fontWeight: "400" }}>Profile</Text>
-          </View>
+          </View> */}
         </View>
         <View style={styles.profile}>
           <Image
@@ -46,7 +47,9 @@ const Drawer = () => {
           </View>
         </View>
         <View>
-          <Icon iconName="user" text="My Profile" />
+          <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+            <Icon iconName="user" text="My Profile" />
+          </TouchableOpacity>
           <Icon iconName="cog" text="Settings" />
           <Icon iconName="bell" text="Notification" />
 
@@ -58,7 +61,7 @@ const Drawer = () => {
           </View>
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </DrawerContentScrollView>
   );
 };
 const styles = StyleSheet.create({
@@ -85,4 +88,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Drawer;
+export default DrawerContent;
