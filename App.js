@@ -1,5 +1,7 @@
 // external imports
-import { StyleSheet, Text, View, SafeAreaView, Platform } from "react-native";
+import { StyleSheet, SafeAreaView, Platform } from "react-native";
+import { StatusBar } from "expo-status-bar";
+
 import { legacy_createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
@@ -13,14 +15,15 @@ import { ApplicationProvider } from "@ui-kitten/components";
 
 // local imports
 import rootReducer from "./redux/reducers";
-import Test from "./screens/Test";
+// import Home from "./screens/Home";
 import Register from "./screens/Register";
 import DashBoard from "./screens/DashBoard";
 import Profile from "./screens/Profile";
+import EditProfile from "./screens/EditProfile";
 import Notification from "./screens/Notification";
 import Login from "./screens/Login";
 import Settings from "./screens/Settings";
-import { StatusBar } from "expo-status-bar";
+
 
 // store
 const store = legacy_createStore(
@@ -39,12 +42,13 @@ export default function App() {
           style={{ flex: 1, paddingTop: Platform.OS === "android" ? 22 : 0 }}
         >
           <NavigationContainer>
-            <Stack.Navigator initialRouteName="Register">
-              <Stack.Screen name="Test" component={Test} />
+            <Stack.Navigator initialRouteName="Profile" screenOptions={{headerShown: false}} >
+              <Stack.Screen name="DashBoard" component={DashBoard} />
+              {/* <Stack.Screen name="Home" component={Home} /> */}
               <Stack.Screen name="Login" component={Login} />
               <Stack.Screen name="Notification" component={Notification} />
               <Stack.Screen name="Profile" component={Profile} />
-              <Stack.Screen name="DashBoard" component={DashBoard} />
+              <Stack.Screen name="EditProfile" component={EditProfile} />
               <Stack.Screen name="Register" component={Register} />
               <Stack.Screen name="Settings" component={Settings} />
             </Stack.Navigator>
