@@ -17,7 +17,7 @@ const profileImage = {
 
 const EditProfile = ({ navigation, route }) => {
   const navigateBackToProfile = () => {
-    navigation.navigate("profile");
+    navigation.navigate("Profile");
   };
   return (
     <View style={styles.container}>
