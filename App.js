@@ -26,6 +26,7 @@ import EditProfile from "./screens/EditProfile";
 import Notification from "./screens/Notification";
 import Login from "./screens/Login";
 import Settings from "./screens/Settings";
+import Home from './screens/Home'
 import DrawerContent from "./screens/Drawer";
 
 // store
@@ -45,14 +46,15 @@ export default function App() {
     <Provider store={store}>
       <ApplicationProvider {...eva} theme={eva.dark}>
         <SafeAreaView
-          style={{ flex: 1, paddingTop: Platform.OS === "android" ? 42 : 0 }}
+          style={{ flex: 1, paddingTop: Platform.OS === "android" ? 40 : 0 }}
         >
           <NavigationContainer>
             <Drawer.Navigator
               drawerContent={(props) => <DrawerContent {...props} />}
-              initialRouteName="DashBoard"
+              initialRouteName="Home"
               screenOptions={{ headerShown: false, drawerType: 'front' }}
             >
+            <Drawer.Screen name="Home" component={Home}/>
               <Drawer.Screen name="DashBoard" component={DashBoard} />
               <Drawer.Screen name="Login" component={Login} />
               <Drawer.Screen name="Notification" component={Notification} />
@@ -63,7 +65,7 @@ export default function App() {
             </Drawer.Navigator>
           </NavigationContainer>
 
-          <StatusBar barStyle="dark-content" backgroundColor="#F4F5F6" />
+          <StatusBar barStyle="dark-content" />
         </SafeAreaView>
       </ApplicationProvider>
     </Provider>
