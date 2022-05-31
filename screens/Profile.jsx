@@ -29,7 +29,7 @@ const Profile = ({ navigation }) => {
     <View style={styles.profileContainer}>
       {/*============================Header View===============================*/}
       <View style={styles.header}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
           <View
             style={{
               //backgroundColor: "yellow",
@@ -106,7 +106,7 @@ const Profile = ({ navigation }) => {
               alignItems: "center",
               paddingVertical: 15,
               paddingStart: 10,
-              flex: 1
+              flex: 1,
             }}
           >
             <Ionicons

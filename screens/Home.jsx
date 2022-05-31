@@ -244,23 +244,6 @@ export default function App() {
           />
         </View>
       </View>
-
-      <View style={styles.BottomIcons}>
-        <AntDesign
-          style={{ marginLeft: 15 }}
-          name="home"
-          size={24}
-          color="red"
-        />
-        <Entypo name="compass" size={24} color="#d0d0de" />
-        <AntDesign name="message1" size={24} color="#d0d0de" />
-        <MaterialCommunityIcons
-          name="contacts"
-          size={24}
-          color="#d0d0de"
-          style={{ marginRight: 15 }}
-        />
-      </View>
     </SafeAreaView>
   );
 }
@@ -362,10 +345,5 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginLeft: 7,
     marginRight: 7,
-  },
-  BottomIcons: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginTop: 13,
   },
 });
