@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { SearchBar } from "react-native-elements";
+
 import {
   StyleSheet,
   Text,
@@ -20,8 +20,6 @@ import {
   Octicons,
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
-import { Card } from "react-native-paper";
-import { Icon } from "react-native-elements";
 
 export default function App() {
   return (
@@ -33,7 +31,7 @@ export default function App() {
             <Text style={styles.butomText}>Will you want to donate blood!</Text>
           </View>
           <Image
-            source={require("./assets/sundi.jpeg")}
+            source={require("../assets/sundi.jpeg")}
             style={styles.firstimg}
           />
         </View>
@@ -179,7 +177,7 @@ export default function App() {
       <View style={styles.mainChat}>
         <View style={styles.headerChat}>
           <Image
-            source={require("./assets/sundi.jpeg")}
+            source={require("../assets/sundi.jpeg")}
             style={styles.chtimg}
           />
           <View
@@ -191,7 +189,7 @@ export default function App() {
             <Text style={{ fontWeight: "bold" }}>Sundiata keita</Text>
             <Text>updates from kanifing laout</Text>
           </View>
-          <Icon
+          <MaterialIcons
             style={{
               marginTop: 20,
               marginLeft: 80,
@@ -223,7 +221,7 @@ export default function App() {
       <View style={styles.kindaChat}>
         <View style={styles.headerChat}>
           <Image
-            source={require("./assets/sundi.jpeg")}
+            source={require("../assets/sundi.jpeg")}
             style={styles.chtimg}
           />
           <View
@@ -235,7 +233,7 @@ export default function App() {
             <Text style={{ fontWeight: "bold" }}>Muhammad ndong</Text>
             <Text>updates from kanifing laout</Text>
           </View>
-          <Icon
+          <MaterialIcons
             style={{
               marginTop: 20,
               marginLeft: 80,
@@ -283,7 +281,7 @@ const styles = StyleSheet.create({
   },
   firstimg: {
     marginLeft: 100,
-    borderRadius: "50%",
+    borderRadius: 50,
     height: 50,
     width: 50,
     marginTop: 8,
