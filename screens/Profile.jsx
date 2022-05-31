@@ -23,7 +23,7 @@ const profileImage = {
 
 const Profile = ({ navigation }) => {
   const navigateToEditProfile = () => {
-    navigation.navigate("editProfile");
+    navigation.navigate("EditProfile");
   };
   return (
     <View style={styles.profileContainer}>
@@ -81,7 +81,7 @@ const Profile = ({ navigation }) => {
               flexDirection: "row",
               alignItems: "center",
               paddingVertical: 15,
-              paddingRight: 100,
+              flex: 1,
               borderRightWidth: 1,
               borderRightColor: "#bdd0e7",
             }}
@@ -105,8 +105,8 @@ const Profile = ({ navigation }) => {
               flexDirection: "row",
               alignItems: "center",
               paddingVertical: 15,
-              //borderRightWidth: 1,
-              //borderRightColor: "#bdd0e7",
+              paddingStart: 10,
+              flex: 1
             }}
           >
             <Ionicons
