@@ -1,5 +1,5 @@
 // external imports
-import { StyleSheet, SafeAreaView, Platform } from "react-native";
+import { StyleSheet, SafeAreaView, Platform, View } from "react-native";
 import { StatusBar } from "expo-status-bar";
 
 // redux
@@ -26,8 +26,19 @@ import EditProfile from "./screens/EditProfile";
 import Notification from "./screens/Notification";
 import Login from "./screens/Login";
 import Settings from "./screens/Settings";
-import Home from './screens/Home'
+import Home from "./screens/Home";
 import DrawerContent from "./screens/Drawer";
+
+import {
+  MaterialIcons,
+  Entypo,
+  FontAwesome,
+  Ionicons,
+  AntDesign,
+  Fontisto,
+  Octicons,
+  MaterialCommunityIcons,
+} from "@expo/vector-icons";
 
 // store
 const store = legacy_createStore(
@@ -51,10 +62,10 @@ export default function App() {
           <NavigationContainer>
             <Drawer.Navigator
               drawerContent={(props) => <DrawerContent {...props} />}
-              initialRouteName="Home"
-              screenOptions={{ headerShown: false, drawerType: 'front' }}
+              initialRouteName="Register"
+              screenOptions={{ headerShown: false, drawerType: "front" }}
             >
-            <Drawer.Screen name="Home" component={Home}/>
+              <Drawer.Screen name="Home" component={Home} />
               <Drawer.Screen name="DashBoard" component={DashBoard} />
               <Drawer.Screen name="Login" component={Login} />
               <Drawer.Screen name="Notification" component={Notification} />
@@ -66,6 +77,24 @@ export default function App() {
           </NavigationContainer>
 
           <StatusBar barStyle="dark-content" />
+          {/* Bottom Navigation : START */}
+          <View style={styles.BottomIcons}>
+            <AntDesign
+              style={{ marginLeft: 15 }}
+              name="home"
+              size={24}
+              color="red"
+            />
+            <Entypo name="compass" size={24} color="#d0d0de" />
+            <AntDesign name="message1" size={24} color="#d0d0de" />
+            <MaterialCommunityIcons
+              name="contacts"
+              size={24}
+              color="#d0d0de"
+              style={{ marginRight: 15 }}
+            />
+          </View>
+          {/* Bottom Navigation : END */}
         </SafeAreaView>
       </ApplicationProvider>
     </Provider>
@@ -78,5 +107,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+  },
+  BottomIcons: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 13,
   },
 });
