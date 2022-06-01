@@ -1,9 +1,10 @@
 import { StyleSheet, Text, View } from "react-native";
+import Settings from "./Screens/Settings"
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>It is not easy like that deh</Text>
+      <Settings/>
     </View>
   );
 }
