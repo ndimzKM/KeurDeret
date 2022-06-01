@@ -63,7 +63,7 @@ export default function App() {
             <Drawer.Navigator
               drawerContent={(props) => <DrawerContent {...props} />}
               initialRouteName="Register"
-              screenOptions={{ headerShown: false, drawerType: "front" }}
+              screenOptions={{ headerShown: false, drawerType: "front", drawerPosition: 'right' }}
             >
               <Drawer.Screen name="Home" component={Home} />
               <Drawer.Screen name="DashBoard" component={DashBoard} />
@@ -73,12 +73,10 @@ export default function App() {
               <Drawer.Screen name="EditProfile" component={EditProfile} />
               <Drawer.Screen name="Register" component={Register} />
               <Drawer.Screen name="Settings" component={Settings} />
+              
             </Drawer.Navigator>
-          </NavigationContainer>
-
-          <StatusBar barStyle="dark-content" />
-          {/* Bottom Navigation : START */}
-          <View style={styles.BottomIcons}>
+             {/* Bottom Navigation : START */}
+          {/* <View style={styles.BottomIcons}>
             <AntDesign
               style={{ marginLeft: 15 }}
               name="home"
@@ -93,8 +91,12 @@ export default function App() {
               color="#d0d0de"
               style={{ marginRight: 15 }}
             />
-          </View>
+          </View> */}
           {/* Bottom Navigation : END */}
+          </NavigationContainer>
+
+          <StatusBar barStyle="dark-content" />
+         
         </SafeAreaView>
       </ApplicationProvider>
     </Provider>
