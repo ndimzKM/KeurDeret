@@ -1,13 +1,10 @@
 import {
   TouchableOpacity,
-  Platform,
   StyleSheet,
   Image,
   View,
   Text,
-  ScrollView,
 } from "react-native";
-import { useState } from "react";
 import { FontAwesome5 } from "@expo/vector-icons";
 
 const Icon = ({ iconName, text }) => {
@@ -24,25 +21,11 @@ const Icon = ({ iconName, text }) => {
 };
 
 const DrawerContent = ({ props, navigation }) => {
-  const [selected, setSelected] = useState("profile");
+  
   return (
     <View style={styles.container} {...props}>
       <View style={styles.top}>
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "flex-end",
-            paddingEnd: 20,
-            paddingVertical: 15,
-          }}
-        >
-          <TouchableOpacity
-            onPress={() => navigation.closeDrawer()}
-            style={styles.hideDrawerbutton}
-          >
-            <FontAwesome5 name="arrow-left" size={20} color="white" />
-          </TouchableOpacity>
-        </View>
+
 
         <View style={styles.profile}>
           <Image
@@ -111,14 +94,11 @@ const DrawerContent = ({ props, navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "##edf6f9",
   },
-  top: {},
 
   bottom: {
     flex: 1,
     justifyContent: "space-between",
-    backgroundColor: "#F0F5F9",
     paddingBottom: 15,
   },
   image: {
@@ -127,17 +107,12 @@ const styles = StyleSheet.create({
     borderRadius: 50,
   },
 
-  hideDrawerbutton: {
-    paddingHorizontal: 20,
-    paddingVertical: 7,
-    borderRadius: 25,
-    backgroundColor: "#2B363B",
-  },
   profile: {
     flexDirection: "row",
     justifyContent: "flex-start",
     marginBottom: 5,
-    paddingStart: 20
+    paddingStart: 20,
+    paddingVertical: 20
   },
 });
 
