@@ -67,7 +67,13 @@ export default function App() {
                 headerShown: false,
                 drawerType: "front",
                 drawerPosition: "right",
+                drawerStyle:{
+                  marginVertical: 15,
+                  borderBottomLeftRadius: 15,
+                  borderTopLeftRadius: 15,
+                }
               }}
+              
             >
               <Drawer.Screen name="Home" component={Home} />
               <Drawer.Screen name="DashBoard" component={DashBoard} />

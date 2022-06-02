@@ -17,12 +17,15 @@ import {
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
 import BottomNav from "../components/BottomNav";
+import FloatingButton from "../components/FloatingButton";
 
 export default function Home({ navigation }) {
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, backgroundColor: '#fff', position: 'relative' }}>
+
+    
       <ScrollView
-        contentContainerStyle={{ paddingBottom: 30 }}
+        contentContainerStyle={{ paddingBottom: 30, backgroundColor: '#fff' }}
         showsVerticalScrollIndicator={false}
       >
         <View style={styles.container}>
@@ -242,6 +245,7 @@ export default function Home({ navigation }) {
           </View>
         </View>
       </ScrollView>
+      {/* <FloatingButton/> */}
 
       <BottomNav navigation={navigation} />
     </View>

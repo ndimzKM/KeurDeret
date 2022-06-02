@@ -1,18 +1,12 @@
-import {
-  TouchableOpacity,
-  StyleSheet,
-  Image,
-  View,
-  Text,
-} from "react-native";
-import { FontAwesome5 } from "@expo/vector-icons";
+import { TouchableOpacity, StyleSheet, Image, View, Text } from "react-native";
+import { FontAwesome } from "@expo/vector-icons";
 
 const Icon = ({ iconName, text }) => {
   return (
     <View style={{ paddingVertical: 15, paddingStart: 20 }}>
       <View style={{ flexDirection: "row", alignItems: "center" }}>
-        <FontAwesome5 name={iconName} size={22} color="#333847" />
-        <Text style={{ paddingLeft: 30, fontSize: 15, color: "#2B363B" }}>
+        <FontAwesome name={iconName} size={24} color="#889096" />
+        <Text style={{ paddingLeft: 30, fontSize: 15, color: "#889096" }}>
           {text}
         </Text>
       </View>
@@ -21,12 +15,9 @@ const Icon = ({ iconName, text }) => {
 };
 
 const DrawerContent = ({ props, navigation }) => {
-  
   return (
     <View style={styles.container} {...props}>
       <View style={styles.top}>
-
-
         <View style={styles.profile}>
           <Image
             style={styles.image}
@@ -39,7 +30,9 @@ const DrawerContent = ({ props, navigation }) => {
               justifyContent: "space-evenly",
             }}
           >
-            <Text style={{ fontSize: 22, color: '#2B363B' }}>App Development</Text>
+            <Text style={{ fontSize: 22, color: "#2B363B" }}>
+              App Development
+            </Text>
             <Text style={{ fontWeight: "200" }}>appdevelopment@hub.org</Text>
           </View>
         </View>
@@ -55,6 +48,7 @@ const DrawerContent = ({ props, navigation }) => {
           onPress={() => {
             navigation.navigate("Settings");
           }}
+          style={{ borderTopWidth: 1, borderTopColor: "#F3F6F6", }}
         >
           <Icon iconName="cog" text="Settings" />
         </TouchableOpacity>
@@ -62,6 +56,7 @@ const DrawerContent = ({ props, navigation }) => {
           onPress={() => {
             navigation.navigate("Notification");
           }}
+          style={{ borderTopWidth: 1, borderTopColor: "#F3F6F6" }}
         >
           <Icon iconName="bell" text="Notification" />
         </TouchableOpacity>
@@ -69,23 +64,33 @@ const DrawerContent = ({ props, navigation }) => {
 
       <View style={styles.bottom}>
         <View>
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate("Profile");
-          }}
-        >
-          <Icon iconName="user" text="My Profile" />
-        </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("Profile");
+            }}
+            style={{ borderTopWidth: 1, borderTopColor: "#F3F6F6" }}
+          >
+            <Icon iconName="user" text="My Profile" />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Profile")}
+            style={{ borderTopWidth: 1, borderTopColor: "#F3F6F6" }}
+          >
             <Icon iconName="question-circle" text="FAQ" />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Profile")}
+            style={{ borderTopWidth: 1, borderTopColor: "#F3F6F6" }}
+          >
             <Icon iconName="exclamation-circle" text="About App" />
           </TouchableOpacity>
         </View>
 
-        <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
-          <Icon iconName="sign-out-alt" text="Logout" />
+        <TouchableOpacity
+          onPress={() => navigation.navigate("Register")}
+          
+        >
+          <Icon iconName="sign-out" text="Logout" />
         </TouchableOpacity>
       </View>
     </View>
@@ -112,7 +117,7 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     marginBottom: 5,
     paddingStart: 20,
-    paddingVertical: 20
+    paddingVertical: 20,
   },
 });
 
