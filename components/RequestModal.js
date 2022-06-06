@@ -1,19 +1,38 @@
 import { disableExpoCliLogging } from "expo/build/logs/Logs";
-import React from "react";
+import { Picker } from "@react-native-picker/picker";
+import React, { useState } from "react";
 import { View, StyleSheet, Modal, Text, Button } from "react-native";
-import * as actions from '../redux/actions'
+import * as actions from "../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 
 const RequestModal = () => {
   const modalVisible = useSelector((state) => state.modal);
   const dispatch = useDispatch();
 
+  const [bloodType, setBloodType] = useState("");
   return (
     <Modal transparent={true} visible={modalVisible}>
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
           <Text>Request for Blood</Text>
-          <Button title="Cancel" onPress={() => dispatch(actions.hideModal())} />
+          <Picker
+            selectedValue={bloodType}
+            onValueChange={(itemValue, itemIndex) => setBloodType(itemValue)}
+            style={{ width: "100%" }}
+          >
+            <Picker.Item label="AB-" value="ab-" />
+            <Picker.Item label="AB+" value="ab+" />
+            <Picker.Item label="A-" value="a-" />
+            <Picker.Item label="A+" value="a+" />
+            <Picker.Item label="B-" value="b-" />
+            <Picker.Item label="B+" value="b+" />
+            <Picker.Item label="O-" value="o-" />
+            <Picker.Item label="O+" value="O+" />
+          </Picker>
+          <Button
+            title="Cancel"
+            onPress={() => dispatch(actions.hideModal())}
+          />
         </View>
       </View>
     </Modal>
@@ -25,7 +44,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
 
-    marginTop: 22,
+    marginTop: 12,
   },
   modalView: {
     margin: 20,

@@ -11,7 +11,7 @@ import {
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
 import FloatingButton from "./FloatingButton";
-const BottomNav = ({ navigation, setModalVisible }) => {
+const BottomNav = ({ navigation }) => {
   return (
     <View>
       <View style={styles.BottomIcons}>
@@ -27,7 +27,7 @@ const BottomNav = ({ navigation, setModalVisible }) => {
         <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
           <Entypo name="compass" size={24} color="#d0d0de" />
         </TouchableOpacity>
-        <FloatingButton />
+        <FloatingButton/>
         <TouchableOpacity>
           <AntDesign name="message1" size={24} color="#d0d0de" />
         </TouchableOpacity>
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 5,
     backgroundColor: "#fff",
-    // zIndex: 5,
+    // zIndex: 5
   },
 });
 
