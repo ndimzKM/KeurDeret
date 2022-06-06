@@ -1,7 +1,7 @@
 import { disableExpoCliLogging } from "expo/build/logs/Logs";
 import { Picker } from "@react-native-picker/picker";
 import React, { useState } from "react";
-import { View, StyleSheet, Modal, Text, Button } from "react-native";
+import { View, StyleSheet, Modal, Text, Button, TouchableOpacity } from "react-native";
 import * as actions from "../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -11,10 +11,10 @@ const RequestModal = () => {
 
   const [bloodType, setBloodType] = useState("");
   return (
-    <Modal transparent={true} visible={modalVisible}>
+    <Modal transparent={true} visible={modalVisible} animationType='fade'>
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
-          <Text>Request for Blood</Text>
+          <Text style={styles.title}>Select Blood Type</Text>
           <Picker
             selectedValue={bloodType}
             onValueChange={(itemValue, itemIndex) => setBloodType(itemValue)}
@@ -29,10 +29,18 @@ const RequestModal = () => {
             <Picker.Item label="O-" value="o-" />
             <Picker.Item label="O+" value="O+" />
           </Picker>
-          <Button
-            title="Cancel"
-            onPress={() => dispatch(actions.hideModal())}
-          />
+
+          <View style={styles.buttonGroup}>
+          <TouchableOpacity style={styles.buttonCancel} onPress={() => dispatch(actions.hideModal())}>
+              <Text style={{fontSize: 18, color: 'red'}}>Cancel</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.buttonRequest} onPress={() => dispatch(actions.hideModal())}>
+              <Text style={{fontSize: 18, color: 'blue'}}>Send Request</Text>
+          </TouchableOpacity>
+          </View>
+
+
         </View>
       </View>
     </Modal>
@@ -42,15 +50,19 @@ const RequestModal = () => {
 const styles = StyleSheet.create({
   centeredView: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: "flex-end",
+  },
 
-    marginTop: 12,
+  title: {
+    fontSize: 22,
+    fontWeight: 'bold'
   },
   modalView: {
-    margin: 20,
+ 
     backgroundColor: "white",
-    borderRadius: 20,
-    padding: 35,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    padding: 15,
     alignItems: "center",
     shadowColor: "#000",
     shadowOffset: {
@@ -61,6 +73,13 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
   },
+
+  buttonGroup: {
+    width: '100%',
+    // backgroundColor: 'gray',
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  }
 });
 
 export default RequestModal;
