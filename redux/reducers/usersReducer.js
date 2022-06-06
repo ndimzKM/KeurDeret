@@ -1,6 +1,6 @@
 
 // local imports
-import { ADD_USER, DELETE_USER, UPDATE_USER } from "../actions";
+import * as actionTypes from "../actions";
 
 // initial state value
 const initialState = [
@@ -9,11 +9,11 @@ const initialState = [
 
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_USER:
+        case actionTypes.ADD_USER:
             return [...state, action.payload]
-        case DELETE_USER:
+        case actionTypes.DELETE_USER:
             return state.filter(item => (item.id !== action.payload))
-        case UPDATE_USER:
+        case actionTypes.UPDATE_USER:
             return state.map(item => (item.id === action.payload.id ? action.payload : item))
         default:
             return state;

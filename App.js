@@ -28,6 +28,7 @@ import Login from "./screens/Login";
 import Settings from "./screens/Settings";
 import Home from "./screens/Home";
 import DrawerContent from "./screens/Drawer";
+import RequestModal from "./components/RequestModal";
 
 import {
   MaterialIcons,
@@ -59,6 +60,8 @@ export default function App() {
         <SafeAreaView
           style={{ flex: 1, paddingTop: Platform.OS === "android" ? 40 : 0 }}
         >
+
+
           <NavigationContainer>
             <Drawer.Navigator
               drawerContent={(props) => <DrawerContent {...props} />}
