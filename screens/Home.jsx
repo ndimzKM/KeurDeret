@@ -1,4 +1,5 @@
 import { StatusBar } from "expo-status-bar";
+import React, { useState } from "react";
 
 import {
   StyleSheet,
@@ -17,12 +18,17 @@ import {
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
 import BottomNav from "../components/BottomNav";
+import FloatingButton from "../components/FloatingButton";
+import RequestModal from "../components/RequestModal";
 
 export default function Home({ navigation }) {
+  const [modalVisible, setModalVisible] = useState(true);
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, backgroundColor: "#fff", position: "relative" }}>
+      <RequestModal/>
+
       <ScrollView
-        contentContainerStyle={{ paddingBottom: 30 }}
+        contentContainerStyle={{ paddingBottom: 30, backgroundColor: "#fff" }}
         showsVerticalScrollIndicator={false}
       >
         <View style={styles.container}>
@@ -242,8 +248,9 @@ export default function Home({ navigation }) {
           </View>
         </View>
       </ScrollView>
+      {/* <FloatingButton/> */}
 
-      <BottomNav navigation={navigation} />
+      <BottomNav navigation={navigation} setModalVisible={setModalVisible} />
     </View>
   );
 }
