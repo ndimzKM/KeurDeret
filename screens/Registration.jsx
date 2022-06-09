@@ -1,8 +1,8 @@
 import React from "react";
-import { SafeAreaView, View } from "react-native";
+import { SafeAreaView, View, Text} from "react-native";
 import COLORS from "../colors/colors";
-import Button from "../component/Button";
-import DetailInput from "../component/DetailInput";
+import Button from "../components/Button";
+import DetailInput from "../components/DetailInput";
 
 const Registration = ({ navigation }) => {
   return (

@@ -16,11 +16,11 @@ const DetailInput = ({
   const [hidePassword, setHidePassword] = React.useState(password);
   return (
     <View style={{ marginBottom: 10 }}>
-      <Text style={style.label}>{label}</Text>
+      <Text style={styles.label}>{label}</Text>
       {/* check for error N FOCUS with bordercolor if statement */}
       <View
         style={
-          (style.inputContainer,
+          (styles.inputContainer,
           {
             borderColor: error
               ? COLORS.red
@@ -31,7 +31,7 @@ const DetailInput = ({
         }
       >
         <MaterialCommunityIcons
-          name="IconName"
+          name={iconName}
           size={22}
           color={COLORS.darkBlue}
           marginRight={10}

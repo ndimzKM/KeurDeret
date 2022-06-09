@@ -1,5 +1,5 @@
 import React from "react";
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity, Text } from "react-native";
 import COLORS from "../colors/colors";
 const Button = ({ title, onPress = () => {} }) => {
   return (

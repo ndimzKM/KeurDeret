@@ -87,7 +87,7 @@ const DrawerContent = ({ props, navigation }) => {
         </View>
 
         <TouchableOpacity
-          onPress={() => navigation.navigate("Register")}
+          onPress={() => navigation.navigate("Registration")}
           
         >
           <Icon iconName="sign-out" text="Logout" />
