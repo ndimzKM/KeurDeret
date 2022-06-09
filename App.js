@@ -27,6 +27,7 @@ import Notification from "./screens/Notification";
 import Login from "./screens/Login";
 import Settings from "./screens/Settings";
 import Home from "./screens/Home";
+import Registration from "./screens/Registration";
 import DrawerContent from "./screens/Drawer";
 import RequestModal from "./components/RequestModal";
 
@@ -80,6 +81,7 @@ export default function App() {
             >
               <Drawer.Screen name="Home" component={Home} />
               <Drawer.Screen name="DashBoard" component={DashBoard} />
+              <Drawer.Screen name="Registration" component={Registration} />
               <Drawer.Screen name="Login" component={Login} />
               <Drawer.Screen name="Notification" component={Notification} />
               <Drawer.Screen name="Profile" component={Profile} />
