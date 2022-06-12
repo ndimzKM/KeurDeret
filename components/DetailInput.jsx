@@ -62,7 +62,7 @@ const DetailInput = ({
 const styles = StyleSheet.create({
   label: {
     marginVertical: 5,
-    fontsize: 14,
+    fontSize: 14,
     color: COLORS.grey,
   },
   inputContainer: {

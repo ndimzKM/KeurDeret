@@ -33,7 +33,7 @@ function DashBoard() {
           }}
         />
         <View style={{ marginLeft: 20 }}>
-          <Text style={{ fontWeight: "350", fontSize: 20 }}>Fatou Bah</Text>
+          <Text style={{ fontWeight: "400", fontSize: 20 }}>Fatou Bah</Text>
           <Text style={{ fontSize: 15 }}>Banjul</Text>
         </View>
       </View>

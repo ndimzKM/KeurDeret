@@ -57,7 +57,7 @@ const Drawer = createDrawerNavigator();
 export default function App() {
   return (
     <Provider store={store}>
-      <ApplicationProvider {...eva} theme={eva.dark}>
+      
         <SafeAreaView
           style={{ flex: 1, paddingTop: Platform.OS === "android" ? 40 : 0 }}
         >
@@ -89,29 +89,11 @@ export default function App() {
               <Drawer.Screen name="Register" component={Register} />
               <Drawer.Screen name="Settings" component={Settings} />
             </Drawer.Navigator>
-            {/* Bottom Navigation : START */}
-            {/* <View style={styles.BottomIcons}>
-            <AntDesign
-              style={{ marginLeft: 15 }}
-              name="home"
-              size={24}
-              color="red"
-            />
-            <Entypo name="compass" size={24} color="#d0d0de" />
-            <AntDesign name="message1" size={24} color="#d0d0de" />
-            <MaterialCommunityIcons
-              name="contacts"
-              size={24}
-              color="#d0d0de"
-              style={{ marginRight: 15 }}
-            />
-          </View> */}
-            {/* Bottom Navigation : END */}
+            
           </NavigationContainer>
 
           <StatusBar barStyle="dark-content" />
         </SafeAreaView>
-      </ApplicationProvider>
     </Provider>
   );
 }
