@@ -39,10 +39,10 @@ const DrawerContent = ({ props, navigation }) => {
 
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate("DashBoard");
+            navigation.navigate("Home");
           }}
         >
-          <Icon iconName="home" text="Dashboard" />
+          <Icon iconName="home" text="Home" />
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {

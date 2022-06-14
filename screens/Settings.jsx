@@ -15,7 +15,7 @@ import {
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
 
-function Settings() {
+function Settings({navigation}) {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
@@ -24,7 +24,7 @@ function Settings() {
           <Text style={{ fontSize: 20, fontWeight: "600" }}>Settings</Text>
           <Text style={{ fontSize: 13, color: "#b6b8b9" }}>@username</Text>
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=> navigation.goBack()}>
           <Text style={{ fontSize: 17 }}>Done</Text>
         </TouchableOpacity>
       </View>

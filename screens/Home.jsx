@@ -40,10 +40,13 @@ export default function Home({ navigation }) {
                 Will you want to donate blood!
               </Text>
             </View>
+            <TouchableOpacity onPress={()=> navigation.navigate('DashBoard')}>
             <Image
               source={require("../assets/sundi.jpeg")}
               style={styles.thumbnail}
             />
+            </TouchableOpacity>
+            
           </View>
 
           {/* search component */}
