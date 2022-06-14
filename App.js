@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
-import Settings from "./Screens/Settings"
+import Settings from "./screens/Settings"
 
 export default function App() {
   return (
