@@ -1,50 +1,79 @@
-import { StyleSheet, View, Text, Image, TextInput, Button } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  TextInput,
+  ScrollView,
+} from "react-native";
 import { Entypo } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native";
+import { useState } from "react";
 
 function Register() {
+  const [number, setNumber] = useState(null);
+  const signin = () => {
+    setNumber(number);
+    console.log(number);
+  };
   return (
     <View style={styles.Register}>
       <Image source={require("../assets/blood.jpg")} style={styles.Image} />
-      <View style={styles.contents}>
-        <Text style={{ fontWeight: "bold" }}>Welcome to KeurDeret </Text>
+      <ScrollView>
+        <View style={styles.contents}>
+          <Text style={{ fontWeight: "bold" }}>Welcome to KeurDeret </Text>
 
-        <View style={styles.signin}>
-          <Text style={{ fontSize: 30, fontWeight: "bold" }}>Sign in</Text>
-          <View style={{ flexDirection: "row", alignItems: "center" }}>
-            <Text
-              style={{ paddingRight: 5, fontWeight: "bold", color: "blue" }}
-            >
-              Help
+          <View style={styles.signin}>
+            <Text style={{ fontSize: 30, fontWeight: "bold" }}>Sign in</Text>
+            <TouchableOpacity>
+              <View style={{ flexDirection: "row", alignItems: "center" }}>
+                <Text
+                  style={{ paddingRight: 5, fontWeight: "bold", color: "blue" }}
+                >
+                  Help
+                </Text>
+
+                <Entypo name="help-with-circle" size={24} color="blue" />
+              </View>
+            </TouchableOpacity>
+          </View>
+          <View style={{ flexDirection: "column" }}>
+            <Text style={{ paddingBottom: 10, fontWeight: "bold" }}>
+              Phone Number
             </Text>
-            <Entypo name="help-with-circle" size={24} color="blue" />
+            <TextInput
+              style={styles.TextInput}
+              placeholder="enter number"
+              onChangeText={setNumber}
+              value={number}
+              keyboardType="phone-pad"
+            />
+          </View>
+          <View>
+            <TouchableOpacity style={{ paddingTop: 20 }} onPress={signin}>
+              <View style={styles.Button}>
+                <Text
+                  style={{
+                    justifyContent: "center",
+                    color: "#fff",
+                    fontSize: 15,
+                    fontWeight: "bold",
+                  }}
+                >
+                  Sign in
+                </Text>
+              </View>
+            </TouchableOpacity>
           </View>
         </View>
-        <View style={{ flexDirection: "column" }}>
-          <Text style={{ paddingBottom: 10 }}>Phone Number</Text>
-          <TextInput style={styles.TextInput} placeholder="enter Number" />
-        </View>
-        <View>
-          <TouchableOpacity style={{ paddingTop: 20 }}>
-            <View style={styles.Button}>
-              <Text
-                style={{
-                  justifyContent: "center",
-                  color: "#fff",
-                  fontSize: 15,
-                  fontWeight: "bold",
-                }}
-              >
-                Sign in
-              </Text>
-            </View>
-          </TouchableOpacity>
-        </View>
-      </View>
+      </ScrollView>
     </View>
   );
 }
 const styles = StyleSheet.create({
+  Register: {
+    flex: 1,
+  },
   contents: {
     marginHorizontal: 30,
     marginVertical: 20,
@@ -67,6 +96,8 @@ const styles = StyleSheet.create({
     borderColor: "gray",
     borderWidth: 1,
     height: 40,
+    paddingLeft: 5,
+    fontSize: 20,
   },
   Button: {
     borderWidth: 1,

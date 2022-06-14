@@ -10,7 +10,8 @@ import {
   Octicons,
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
-const BottomNav = ({navigation}) => {
+import FloatingButton from "./FloatingButton";
+const BottomNav = ({ navigation }) => {
   return (
     <View>
       <View style={styles.BottomIcons}>
@@ -23,9 +24,10 @@ const BottomNav = ({navigation}) => {
           />
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+        <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
           <Entypo name="compass" size={24} color="#d0d0de" />
         </TouchableOpacity>
+        <FloatingButton/>
         <TouchableOpacity>
           <AntDesign name="message1" size={24} color="#d0d0de" />
         </TouchableOpacity>
@@ -43,11 +45,13 @@ const BottomNav = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
-    BottomIcons: {
+  BottomIcons: {
     flexDirection: "row",
     justifyContent: "space-between",
-    paddingVertical: 15,
-    backgroundColor: '#010101'
+    alignItems: 'center',
+    paddingVertical: 5,
+    backgroundColor: "#fff",
+    // zIndex: 5
   },
 });
 

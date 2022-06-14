@@ -27,7 +27,9 @@ import Notification from "./screens/Notification";
 import Login from "./screens/Login";
 import Settings from "./screens/Settings";
 import Home from "./screens/Home";
+import Registration from "./screens/Registration";
 import DrawerContent from "./screens/Drawer";
+import RequestModal from "./components/RequestModal";
 
 import {
   MaterialIcons,
@@ -55,50 +57,43 @@ const Drawer = createDrawerNavigator();
 export default function App() {
   return (
     <Provider store={store}>
-      <ApplicationProvider {...eva} theme={eva.dark}>
+      
         <SafeAreaView
           style={{ flex: 1, paddingTop: Platform.OS === "android" ? 40 : 0 }}
         >
+
+
           <NavigationContainer>
             <Drawer.Navigator
               drawerContent={(props) => <DrawerContent {...props} />}
-              initialRouteName="Register"
-              screenOptions={{ headerShown: false, drawerType: "front", drawerPosition: 'right' }}
+              initialRouteName="Home"
+              screenOptions={{
+                headerShown: false,
+                drawerType: "front",
+                drawerPosition: "right",
+                drawerStyle:{
+                  marginVertical: 15,
+                  borderBottomLeftRadius: 15,
+                  borderTopLeftRadius: 15,
+                }
+              }}
+              
             >
               <Drawer.Screen name="Home" component={Home} />
               <Drawer.Screen name="DashBoard" component={DashBoard} />
+              <Drawer.Screen name="Registration" component={Registration} />
               <Drawer.Screen name="Login" component={Login} />
               <Drawer.Screen name="Notification" component={Notification} />
               <Drawer.Screen name="Profile" component={Profile} />
               <Drawer.Screen name="EditProfile" component={EditProfile} />
               <Drawer.Screen name="Register" component={Register} />
               <Drawer.Screen name="Settings" component={Settings} />
-              
             </Drawer.Navigator>
-             {/* Bottom Navigation : START */}
-          {/* <View style={styles.BottomIcons}>
-            <AntDesign
-              style={{ marginLeft: 15 }}
-              name="home"
-              size={24}
-              color="red"
-            />
-            <Entypo name="compass" size={24} color="#d0d0de" />
-            <AntDesign name="message1" size={24} color="#d0d0de" />
-            <MaterialCommunityIcons
-              name="contacts"
-              size={24}
-              color="#d0d0de"
-              style={{ marginRight: 15 }}
-            />
-          </View> */}
-          {/* Bottom Navigation : END */}
+            
           </NavigationContainer>
 
           <StatusBar barStyle="dark-content" />
-         
         </SafeAreaView>
-      </ApplicationProvider>
     </Provider>
   );
 }
