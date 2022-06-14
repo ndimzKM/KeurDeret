@@ -39,7 +39,7 @@ const DrawerContent = ({ props, navigation }) => {
 
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate("Home");
+            navigation.navigate("DashBoard");
           }}
         >
           <Icon iconName="home" text="Dashboard" />
@@ -79,7 +79,7 @@ const DrawerContent = ({ props, navigation }) => {
             <Icon iconName="question-circle" text="FAQ" />
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => navigation.navigate("Profile")}
+            onPress={() => navigation.navigate("Home")}
             style={{ borderTopWidth: 1, borderTopColor: "#F3F6F6" }}
           >
             <Icon iconName="exclamation-circle" text="About App" />

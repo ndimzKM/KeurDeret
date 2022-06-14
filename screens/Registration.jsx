@@ -6,7 +6,7 @@ import DetailInput from "../components/DetailInput";
 
 const Registration = ({ navigation }) => {
   return (
-    <SafeAreaView style={{ backgroundColor: COLORS.white, flex: 1 }}>
+    <View style={{ backgroundColor: COLORS.white, flex: 1, paddingHorizontal: 10 }}>
       {/* <Image
         style={style.image}
         source={require("../blood-donation_istock.jpg")}
@@ -42,7 +42,7 @@ const Registration = ({ navigation }) => {
         <Button title={"Register"} />
         <Text
           // to return to login screen on press
-          onPress={() => navigation.navigate("LoginScreen")}
+          onPress={() => navigation.navigate("Register")}
           style={{
             color: COLORS.black,
             textAlign: "center",
@@ -53,7 +53,7 @@ const Registration = ({ navigation }) => {
           Already have an account? Log in
         </Text>
       </View>
-    </SafeAreaView>
+    </View>
   );
 };
 
