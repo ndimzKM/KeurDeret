@@ -10,7 +10,7 @@ import { Entypo } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native";
 import { useState } from "react";
 
-function Register() {
+function Register({navigation}) {
   const [number, setNumber] = useState(null);
   const signin = () => {
     setNumber(number);
@@ -50,7 +50,7 @@ function Register() {
             />
           </View>
           <View>
-            <TouchableOpacity style={{ paddingTop: 20 }} onPress={signin}>
+            <TouchableOpacity style={{ paddingTop: 20 }} onPress={()=> navigation.navigate('Registration')}>
               <View style={styles.Button}>
                 <Text
                   style={{

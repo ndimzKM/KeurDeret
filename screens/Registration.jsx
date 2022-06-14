@@ -39,7 +39,7 @@ const Registration = ({ navigation }) => {
           label="Password"
           password
         />
-        <Button title={"Register"} />
+        <Button title={"Register"} onPress={() => navigation.navigate('Main')}/>
         <Text
           // to return to login screen on press
           onPress={() => navigation.navigate("Register")}
