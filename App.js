@@ -88,7 +88,6 @@ export default function App() {
         style={{ flex: 1, paddingTop: Platform.OS === "android" ? 40 : 0 }}
       >
         <NavigationContainer>
-        
           <Stack.Navigator initialRouteName="Register" screenOptions={{ headerShown: false}}>
             <Stack.Screen name="Register" component={Register} />
             <Stack.Screen name="Registration" component={Registration} />

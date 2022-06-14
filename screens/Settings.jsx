@@ -31,7 +31,8 @@ function Settings() {
       <View style={styles.textinput}>
         <TextInput placeholder="Search Settings" />
       </View>
-      <ScrollView style={{ marginTop: 20, marginHorizontal: 10 }}>
+        
+      <ScrollView style={{ marginTop: 20, marginHorizontal: 10 }} showsVerticalScrollIndicator={false} >
         <TouchableOpacity style={styles.thetop}>
           <Ionicons name="person-outline" size={19} color="#1e3864" />
           <View style={styles.child}>
@@ -59,7 +60,7 @@ function Settings() {
             </Text>
           </View>
           <TouchableOpacity>
-            <MaterialIcons name="arrow-forward-ios" size={24} color="#1e3864" />
+            <MaterialIcons name="arrow-forward-ios" size={18} color="#1e3864" />
           </TouchableOpacity>
         </TouchableOpacity>
         <TouchableOpacity style={styles.thetop}>
@@ -73,7 +74,7 @@ function Settings() {
             </Text>
           </View>
           <TouchableOpacity>
-            <MaterialIcons name="arrow-forward-ios" size={24} color="#1e3864" />
+            <MaterialIcons name="arrow-forward-ios" size={18} color="#1e3864" />
           </TouchableOpacity>
         </TouchableOpacity>
         <TouchableOpacity style={styles.thetop}>
@@ -88,7 +89,7 @@ function Settings() {
             </Text>
           </View>
           <TouchableOpacity>
-            <MaterialIcons name="arrow-forward-ios" size={24} color="#1e3864" />
+            <MaterialIcons name="arrow-forward-ios" size={18} color="#1e3864" />
           </TouchableOpacity>
         </TouchableOpacity>
         <TouchableOpacity style={styles.thetop}>
@@ -102,7 +103,7 @@ function Settings() {
             </Text>
           </View>
           <TouchableOpacity>
-            <MaterialIcons name="arrow-forward-ios" size={24} color="#1e3864" />
+            <MaterialIcons name="arrow-forward-ios" size={18} color="#1e3864" />
           </TouchableOpacity>
         </TouchableOpacity>
         <TouchableOpacity style={styles.thetop}>
@@ -121,7 +122,7 @@ function Settings() {
             </Text>
           </View>
           <TouchableOpacity>
-            <MaterialIcons name="arrow-forward-ios" size={24} color="#1e3864" />
+            <MaterialIcons name="arrow-forward-ios" size={18} color="#1e3864" />
           </TouchableOpacity>
         </TouchableOpacity>
       </ScrollView>
@@ -138,7 +139,7 @@ const styles = StyleSheet.create({
   thetop: {
     flexDirection: "row",
     justifyContent: 'space-between',
-    marginVertical: 30,
+    marginVertical: 15,
     alignItems: "center",
     flex: 1,
   },
