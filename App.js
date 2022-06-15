@@ -54,46 +54,49 @@ const Stack = createNativeStackNavigator();
 // drawer navigator and screen
 const Drawer = createDrawerNavigator();
 
+const Main = () => {
+  return (
+    <Drawer.Navigator
+      drawerContent={(props) => <DrawerContent {...props} />}
+      initialRouteName="Home"
+      screenOptions={{
+        headerShown: false,
+        drawerType: "front",
+        drawerPosition: "right",
+        drawerStyle: {
+          marginVertical: 15,
+          borderBottomLeftRadius: 15,
+          borderTopLeftRadius: 15,
+        },
+      }}
+    >
+      <Drawer.Screen name="Home" component={Home} />
+      <Drawer.Screen name="DashBoard" component={DashBoard} />
+      <Drawer.Screen name="Login" component={Login} />
+      <Drawer.Screen name="Notification" component={Notification} />
+      <Drawer.Screen name="Profile" component={Profile} />
+      <Drawer.Screen name="EditProfile" component={EditProfile} />
+      <Drawer.Screen name="Settings" component={Settings} />
+    </Drawer.Navigator>
+  );
+};
+
 export default function App() {
   return (
     <Provider store={store}>
-      
-        <SafeAreaView
-          style={{ flex: 1, paddingTop: Platform.OS === "android" ? 40 : 0 }}
-        >
+      <SafeAreaView
+        style={{ flex: 1, paddingTop: Platform.OS === "android" ? 40 : 0 }}
+      >
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName="Register" screenOptions={{ headerShown: false}}>
+            <Stack.Screen name="Register" component={Register} />
+            <Stack.Screen name="Registration" component={Registration} />
+            <Stack.Screen name="Main" component={Main} />
+          </Stack.Navigator>
+        </NavigationContainer>
 
-
-          <NavigationContainer>
-            <Drawer.Navigator
-              drawerContent={(props) => <DrawerContent {...props} />}
-              initialRouteName="Home"
-              screenOptions={{
-                headerShown: false,
-                drawerType: "front",
-                drawerPosition: "right",
-                drawerStyle:{
-                  marginVertical: 15,
-                  borderBottomLeftRadius: 15,
-                  borderTopLeftRadius: 15,
-                }
-              }}
-              
-            >
-              <Drawer.Screen name="Home" component={Home} />
-              <Drawer.Screen name="DashBoard" component={DashBoard} />
-              <Drawer.Screen name="Registration" component={Registration} />
-              <Drawer.Screen name="Login" component={Login} />
-              <Drawer.Screen name="Notification" component={Notification} />
-              <Drawer.Screen name="Profile" component={Profile} />
-              <Drawer.Screen name="EditProfile" component={EditProfile} />
-              <Drawer.Screen name="Register" component={Register} />
-              <Drawer.Screen name="Settings" component={Settings} />
-            </Drawer.Navigator>
-            
-          </NavigationContainer>
-
-          <StatusBar barStyle="dark-content" />
-        </SafeAreaView>
+        <StatusBar barStyle="dark-content" />
+      </SafeAreaView>
     </Provider>
   );
 }
