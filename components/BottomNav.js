@@ -13,24 +13,24 @@ import {
 import FloatingButton from "./FloatingButton";
 const BottomNav = ({ navigation }) => {
   return (
-    <View>
+    <View style={styles.main}>
       <View style={styles.BottomIcons}>
         <TouchableOpacity>
           <AntDesign
             style={{ marginLeft: 15 }}
             name="home"
             size={24}
-            color="red"
+            color="#6e8cff"
           />
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
+        {/* <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
           <Entypo name="compass" size={24} color="#d0d0de" />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
         <FloatingButton/>
-        <TouchableOpacity>
+        {/* <TouchableOpacity>
           <AntDesign name="message1" size={24} color="#d0d0de" />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
         <TouchableOpacity onPress={() => navigation.openDrawer()}>
           <MaterialCommunityIcons
             name="menu"
@@ -47,12 +47,16 @@ const BottomNav = ({ navigation }) => {
 const styles = StyleSheet.create({
   BottomIcons: {
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
     alignItems: 'center',
-    paddingVertical: 5,
-    backgroundColor: "#fff",
+    paddingVertical: 7.5,
+    // backgroundColor: "#fff", 
     // zIndex: 5
-  },
+  },   
+
+  main: {
+backgroundColor: '#000'
+  }
 });
 
 export default BottomNav;

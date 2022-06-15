@@ -12,7 +12,7 @@ const FloatingButton = () => {
     <TouchableOpacity style={styles.float} onPress={() => dispatch(actions.showModal())}>
       <MaterialCommunityIcons
         name="water-plus-outline"
-        size={27}
+        size={35}
         color="#fff"
       />
     </TouchableOpacity>
@@ -21,12 +21,25 @@ const FloatingButton = () => {
 
 const styles = StyleSheet.create({
   float: {
-    paddingHorizontal: 8,
-    paddingVertical: 8,
-    backgroundColor: "#6e8cff",
+    // position: 'absolute',
+    // paddingHorizontal: 8,
+    // paddingVertical: 8,
+    padding: 10,
+    backgroundColor: "#D33F49",
     borderRadius: "50%",
     borderWidth: 3,
-    borderColor: "#DBE2FF",
+    borderColor: "#ECACB0",
+    marginTop: -37.5,
+    marginBottom: 10,
+    shadowColor: "#D33F49",
+shadowOffset: {
+	width: 0,
+	height: 0,
+},
+shadowOpacity: 0.50,
+shadowRadius: 16,
+
+elevation: 19,
   },
 });
 

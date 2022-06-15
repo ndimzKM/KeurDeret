@@ -24,11 +24,12 @@ import RequestModal from "../components/RequestModal";
 export default function Home({ navigation }) {
   const [modalVisible, setModalVisible] = useState(true);
   return (
-    <View style={{ flex: 1, backgroundColor: "#fff", position: "relative" }}>
+    <View style={{ flex: 1, backgroundColor: "#000", paddingTop: 5 }}>
       <RequestModal/>
 
       <ScrollView
-        contentContainerStyle={{ paddingBottom: 30, backgroundColor: "#fff" }}
+      style={{borderRadius: 10, margin: 5, backgroundColor: '#fff'}}
+        contentContainerStyle={{ paddingBottom: 30, }}
         showsVerticalScrollIndicator={false}
       >
         <View style={styles.container}>
