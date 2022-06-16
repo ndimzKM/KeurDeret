@@ -5,12 +5,12 @@ import {
   Image,
   TextInput,
   ScrollView,
+  TouchableOpacity
 } from "react-native";
 import { Entypo } from "@expo/vector-icons";
-import { TouchableOpacity } from "react-native";
 import { useState } from "react";
 
-function Register({navigation}) {
+function Register({ navigation }) {
   const [number, setNumber] = useState(null);
   const signin = () => {
     setNumber(number);
@@ -25,7 +25,7 @@ function Register({navigation}) {
 
           <View style={styles.signin}>
             <Text style={{ fontSize: 30, fontWeight: "bold" }}>Sign in</Text>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('Registration')}>
               <View style={{ flexDirection: "row", alignItems: "center" }}>
                 <Text
                   style={{ paddingRight: 5, fontWeight: "bold", color: "blue" }}
@@ -50,7 +50,10 @@ function Register({navigation}) {
             />
           </View>
           <View>
-            <TouchableOpacity style={{ paddingTop: 20 }} onPress={()=> navigation.navigate('Registration')}>
+            <TouchableOpacity
+              style={{ paddingTop: 20 }}
+              onPress={() => navigation.replace("Main")}
+            >
               <View style={styles.Button}>
                 <Text
                   style={{

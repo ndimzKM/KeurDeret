@@ -1,16 +1,11 @@
 import React from "react";
 import { View, StyleSheet, TouchableOpacity } from "react-native";
 import {
-  MaterialIcons,
-  Entypo,
-  FontAwesome,
-  Ionicons,
   AntDesign,
-  Fontisto,
-  Octicons,
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
 import FloatingButton from "./FloatingButton";
+
 const BottomNav = ({ navigation }) => {
   return (
     <View style={styles.main}>
@@ -24,13 +19,8 @@ const BottomNav = ({ navigation }) => {
           />
         </TouchableOpacity>
 
-        {/* <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
-          <Entypo name="compass" size={24} color="#d0d0de" />
-        </TouchableOpacity> */}
         <FloatingButton/>
-        {/* <TouchableOpacity>
-          <AntDesign name="message1" size={24} color="#d0d0de" />
-        </TouchableOpacity> */}
+
         <TouchableOpacity onPress={() => navigation.openDrawer()}>
           <MaterialCommunityIcons
             name="menu"
@@ -50,8 +40,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     alignItems: 'center',
     paddingVertical: 7.5,
-    // backgroundColor: "#fff", 
-    // zIndex: 5
   },   
 
   main: {
