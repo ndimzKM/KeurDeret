@@ -30,7 +30,7 @@ function Register({ navigation }) {
                 <Text
                   style={{ paddingRight: 5, fontWeight: "bold", color: "blue" }}
                 >
-                  Help
+                  Register
                 </Text>
 
                 <Entypo name="help-with-circle" size={24} color="blue" />

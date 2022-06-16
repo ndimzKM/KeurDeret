@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, StyleSheet, ScrollView, TextInput, Text } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { useSelector, useDispatch } from "react-redux";
@@ -27,8 +27,15 @@ const Test = ({navigation}) => {
     });
   };
 
+  let photo =''
+
+  useEffect(() => {
+    photo = 'https://picsum.photos/200/300'
+    
+  },);
+
   const add = () => {
-    dispatch(addUser({ ...user, id: users.length + 1 }));
+    dispatch(addUser({ ...user, id: users.length + 1, photo: photo }));
     setUser({});
   };
 
