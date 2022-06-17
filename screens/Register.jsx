@@ -11,7 +11,7 @@ import { Entypo } from "@expo/vector-icons";
 import { useState, useEffect} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../redux/actions";
-import { StatusBar } from "expo-status-bar";
+import { StatusBar, setStatusBarStyle } from "expo-status-bar";
 
 function Register({ navigation }) {
   const users = useSelector((state) => state.users);
@@ -40,7 +40,7 @@ function Register({ navigation }) {
 
   const logIn = () => {
     dispatch(actions.setUser(currentUser))
-    StatusBar.setSatatusBarStyle('light')
+    setStatusBarStyle('light')
     navigation.navigate('Main')
   } 
  
@@ -52,6 +52,7 @@ function Register({ navigation }) {
 
   return (
     <View style={styles.Register}>
+    <StatusBar style="dark" />
       <Image source={require("../assets/blood.jpg")} style={styles.Image} />
       <ScrollView>
         <View style={styles.contents}>

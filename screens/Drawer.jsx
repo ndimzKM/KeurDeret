@@ -1,5 +1,6 @@
 import { TouchableOpacity, StyleSheet, Image, View, Text } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
+import { setStatusBarStyle } from "expo-status-bar";
 
 const Icon = ({ iconName, text }) => {
   return (
@@ -48,7 +49,7 @@ const DrawerContent = ({ props, navigation }) => {
           onPress={() => {
             navigation.navigate("Settings");
           }}
-          style={{ borderTopWidth: 1, borderTopColor: "#F3F6F6", }}
+          style={{ borderTopWidth: 1, borderTopColor: "#F3F6F6" }}
         >
           <Icon iconName="cog" text="Settings" />
         </TouchableOpacity>
@@ -87,8 +88,10 @@ const DrawerContent = ({ props, navigation }) => {
         </View>
 
         <TouchableOpacity
-          onPress={() => navigation.reset({routes: [{name: 'Register'}]})}
-          
+          onPress={() => {
+            navigation.reset({ routes: [{ name: "Register" }] });
+            setStatusBarStyle("dark");
+          }}
         >
           <Icon iconName="sign-out" text="Logout" />
         </TouchableOpacity>
