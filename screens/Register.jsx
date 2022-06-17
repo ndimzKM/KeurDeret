@@ -5,17 +5,49 @@ import {
   Image,
   TextInput,
   ScrollView,
-  TouchableOpacity
+  TouchableOpacity,
 } from "react-native";
 import { Entypo } from "@expo/vector-icons";
-import { useState } from "react";
+import { useState, useEffect} from "react";
+import { useSelector, useDispatch } from "react-redux";
+import * as actions from "../redux/actions";
 
 function Register({ navigation }) {
+  const users = useSelector((state) => state.users);
+  const dispatch = useDispatch();
+
   const [number, setNumber] = useState(null);
-  const signin = () => {
-    setNumber(number);
-    console.log(number);
+  const [currentUser, setCurrentUser] = useState({});
+
+  useEffect(() => {
+    for (const item of users) {
+      if (number == item.phoneNumber) {
+        setCurrentUser(item)
+      }
+    }
+
+  }, [number]);
+
+  const isUser =() => {
+    for (const item of users) {
+      if (number == item.phoneNumber) {
+        return true
+      }
+    }
+    return false
+  }
+
+  const logIn = () => {
+    dispatch(actions.setUser(currentUser))
+    navigation.navigate('Main')
+  } 
+ 
+  const throwError = () => {
+    setNumber("Invalid phone number");
   };
+
+ 
+
   return (
     <View style={styles.Register}>
       <Image source={require("../assets/blood.jpg")} style={styles.Image} />
@@ -25,7 +57,9 @@ function Register({ navigation }) {
 
           <View style={styles.signin}>
             <Text style={{ fontSize: 30, fontWeight: "bold" }}>Sign in</Text>
-            <TouchableOpacity onPress={() => navigation.navigate('Registration')}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Registration")}
+            >
               <View style={{ flexDirection: "row", alignItems: "center" }}>
                 <Text
                   style={{ paddingRight: 5, fontWeight: "bold", color: "blue" }}
@@ -46,13 +80,14 @@ function Register({ navigation }) {
               placeholder="enter number"
               onChangeText={setNumber}
               value={number}
-              keyboardType="phone-pad"
             />
           </View>
           <View>
             <TouchableOpacity
               style={{ paddingTop: 20 }}
-              onPress={() => navigation.replace("Main")}
+              onPress={() => {
+                isUser() ? logIn() : throwError()
+              }}
             >
               <View style={styles.Button}>
                 <Text

@@ -17,7 +17,7 @@ const initialState = [
     firstName: "Sirreh",
     lastName: "Saho",
     address: "Manjai",
-    phoneNumber: "3577717",
+    phoneNumber: "3477717",
     bloodGroup: "B-",
     photo: 'https://cdn.pixabay.com/photo/2015/11/26/00/14/woman-1063100_960_720.jpg'
   },
@@ -26,7 +26,7 @@ const initialState = [
     firstName: "Momodou",
     lastName: "Bah",
     address: "Kotu",
-    phoneNumber: "3577717",
+    phoneNumber: "3377717",
     bloodGroup: "AB",
     photo: 'https://cdn.pixabay.com/photo/2017/10/24/07/13/mask-2883635_960_720.jpg'
   },
@@ -35,7 +35,7 @@ const initialState = [
     firstName: "Aminatou",
     lastName: "Jallow",
     address: "Sinchu",
-    phoneNumber: "3577717",
+    phoneNumber: "3277717",
     bloodGroup: "O+",
     photo: 'https://cdn.pixabay.com/photo/2018/07/25/15/51/hijab-3561651_960_720.jpg'
   },

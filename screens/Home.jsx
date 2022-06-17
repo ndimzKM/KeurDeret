@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import {
   StyleSheet,
@@ -20,11 +20,10 @@ import {
 } from "@expo/vector-icons";
 import BottomNav from "../components/BottomNav";
 import RequestModal from "../components/RequestModal";
-
 export default function Home({ navigation }) {
   const users = useSelector((state) => state.users);
   const currentUser = useSelector((state) => state.user);
-
+  
   return (
     <View style={{ flex: 1, backgroundColor: "#000", paddingTop: 5 }}>
       <RequestModal />
@@ -108,7 +107,7 @@ export default function Home({ navigation }) {
 
             <View style={styles.summaryBottom}>
               <View style={{ alignItems: "center", justifyContent: "center" }}>
-                <TouchableOpacity style={styles.summaryBottomIcons}>
+                <TouchableOpacity style={styles.summaryBottomIcons} onPress={() => console.log(currentUser)}>
                   <Fontisto name="blood-test" size={24} color="#E6A819" />
                 </TouchableOpacity>
                 <Text style={{ color: "#eee" }}>Patients</Text>
@@ -122,7 +121,7 @@ export default function Home({ navigation }) {
               </View>
 
               <View style={{ alignItems: "center", justifyContent: "center" }}>
-                <TouchableOpacity style={styles.summaryBottomIcons}>
+                <TouchableOpacity style={styles.summaryBottomIcons} >
                   <MaterialCommunityIcons
                     name="heart-pulse"
                     size={24}

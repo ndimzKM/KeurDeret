@@ -19,5 +19,5 @@ export const updateUser = (updatedUser) => ({ type: UPDATE_USER, payload: update
 export const showModal = () => ({type: SHOW_MODAL})
 export const hideModal = () => ({type: HIDE_MODAL})
 
-export const setUser = (user) => ({type: SET_USER, pauload: user})
+export const setUser = (user) => ({type: SET_USER, payload: user})
 export const removeUser = () => ({type: REMOVE_USER})

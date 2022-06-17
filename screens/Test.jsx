@@ -3,13 +3,15 @@ import { View, StyleSheet, ScrollView, TextInput, Text } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { useSelector, useDispatch } from "react-redux";
 
-import { addUser, deleteUser, updateUser } from "../redux/actions";
+import { addUser, updateUser } from "../redux/actions";
 
-const Test = ({navigation}) => {
+const Test = ({ navigation }) => {
   const users = useSelector((state) => state.users);
   const dispatch = useDispatch();
   const [isEditing, setIsEditing] = useState(false);
   const [user, setUser] = useState({});
+ 
+  let photo = 'https://source.unsplash.com/random/300x200'
 
   const edit = (id) => {
     setIsEditing(true);
@@ -27,15 +29,13 @@ const Test = ({navigation}) => {
     });
   };
 
-  let photo =''
-
   useEffect(() => {
-    photo = 'https://picsum.photos/200/300'
-    
-  },);
+    photo = `https://source.unsplash.com/random/300x200?sig=`+Math.floor(Math.random() * 200)
+  },[user] );
 
   const add = () => {
     dispatch(addUser({ ...user, id: users.length + 1, photo: photo }));
+    console.log(users);
     setUser({});
   };
 
@@ -92,7 +92,6 @@ const Test = ({navigation}) => {
           // to return to login screen on press
           onPress={() => navigation.navigate("Register")}
           style={{
-            
             textAlign: "center",
             fontSize: 16,
             paddingTop: 5,
@@ -140,7 +139,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     padding: 10,
     fontSize: 22,
-    borderBottomColor: '#ddd'
+    borderBottomColor: "#ddd",
   },
 
   submitBtn: {
@@ -151,8 +150,8 @@ const styles = StyleSheet.create({
   },
 
   btnText: {
-    fontSize: 18
-  }
+    fontSize: 18,
+  },
 });
 
 export default Test;
