@@ -1,5 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
+
 import { useSelector, useDispatch } from "react-redux";
 
 import {
@@ -25,9 +26,9 @@ export default function Home({ navigation }) {
   const currentUser = useSelector((state) => state.user);
   
   return (
-    <View style={{ flex: 1, backgroundColor: "#000", paddingTop: 5 }}>
+    <View style={{ flex: 1, backgroundColor: "#000", paddingTop: 25 }}>
       <RequestModal />
-
+      <StatusBar style="light" />
       <ScrollView
         style={{ borderRadius: 10, margin: 5, backgroundColor: "#fff" }}
         contentContainerStyle={{ paddingBottom: 30 }}

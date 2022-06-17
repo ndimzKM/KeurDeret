@@ -1,5 +1,5 @@
 // external imports
-import { StyleSheet, SafeAreaView, Platform } from "react-native";
+import { StyleSheet, SafeAreaView, Platform, View} from "react-native";
 import { StatusBar } from "expo-status-bar";
 
 // redux
@@ -69,9 +69,10 @@ const Main = () => {
 export default function App() {
   return (
     <Provider store={store}>
-      <SafeAreaView
+      <View
         style={{ flex: 1, paddingTop: Platform.OS === "android" ? 40 : 0 }}
       >
+
         <NavigationContainer>
           <Stack.Navigator initialRouteName="Register" screenOptions={{ headerShown: false}}>
             <Stack.Screen name="Register" component={Register} />
@@ -80,8 +81,8 @@ export default function App() {
           </Stack.Navigator>
         </NavigationContainer>
 
-        <StatusBar barStyle="dark-content" />
-      </SafeAreaView>
+        <StatusBar style="light" />
+      </View>
     </Provider>
   );
 }

@@ -11,6 +11,7 @@ import { Entypo } from "@expo/vector-icons";
 import { useState, useEffect} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../redux/actions";
+import { StatusBar } from "expo-status-bar";
 
 function Register({ navigation }) {
   const users = useSelector((state) => state.users);
@@ -39,6 +40,7 @@ function Register({ navigation }) {
 
   const logIn = () => {
     dispatch(actions.setUser(currentUser))
+    StatusBar.setSatatusBarStyle('light')
     navigation.navigate('Main')
   } 
  
