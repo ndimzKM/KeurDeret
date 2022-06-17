@@ -8,9 +8,15 @@ import {
   Image,
 } from "react-native";
 import { Feather, AntDesign, Fontisto, Ionicons } from "@expo/vector-icons";
+import { useSelector } from "react-redux";
 
 function DashBoard() {
+
+  const currentUser = useSelector((state) => state.user);
+
   return (
+
+    
     <SafeAreaView style={styles.container}>
       <View style={styles.TopIcons}>
         <Text style={{ fontSize: 15, marginRight: 190, fontWeight: "bold" }}>
@@ -29,12 +35,12 @@ function DashBoard() {
         <Image
           style={{ width: 70, height: 70, borderRadius: 50 }}
           source={{
-            uri: "https://cdn.pixabay.com/photo/2016/03/27/21/52/woman-1284411__340.jpg",
+            uri: currentUser.photo,
           }}
         />
         <View style={{ marginLeft: 20 }}>
-          <Text style={{ fontWeight: "400", fontSize: 20 }}>Fatou Bah</Text>
-          <Text style={{ fontSize: 15 }}>Banjul</Text>
+          <Text style={{ fontWeight: "400", fontSize: 20 }}>{currentUser.firstName} {currentUser.lastName}</Text>
+          <Text style={{ fontSize: 15 }}>{currentUser.address}</Text>
         </View>
       </View>
       {/* table */}
@@ -67,12 +73,7 @@ function DashBoard() {
             marginTop: 150,
             flexDirection: "row",
             position: "absolute",
-            // borderBottomWidth: 0.2,
-            // paddingBottom: 30,
-            // borderLeftWidth: 0.2,
-            // borderRightWidth: 0.5,
             paddingTop: 6,
-            // borderRadius: 2,
           }}
         >
           <View
@@ -131,10 +132,6 @@ const styles = StyleSheet.create({
     paddingTop: 30,
     justifyContent: "space-between",
     borderBottomWidth: 0.2,
-    // borderTopWidth: 0.2,
-    // borderLeftWidth: 0.2,
-    // borderRightWidth: 0.2,
-    // borderRadius: 1,
   },
 });
 

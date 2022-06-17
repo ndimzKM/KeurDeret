@@ -5,17 +5,51 @@ import {
   Image,
   TextInput,
   ScrollView,
+  TouchableOpacity,
 } from "react-native";
 import { Entypo } from "@expo/vector-icons";
-import { TouchableOpacity } from "react-native";
-import { useState } from "react";
+import { useState, useEffect} from "react";
+import { useSelector, useDispatch } from "react-redux";
+import * as actions from "../redux/actions";
+import { StatusBar } from "expo-status-bar";
 
-function Register({navigation}) {
+function Register({ navigation }) {
+  const users = useSelector((state) => state.users);
+  const dispatch = useDispatch();
+
   const [number, setNumber] = useState(null);
-  const signin = () => {
-    setNumber(number);
-    console.log(number);
+  const [currentUser, setCurrentUser] = useState({});
+
+  useEffect(() => {
+    for (const item of users) {
+      if (number == item.phoneNumber) {
+        setCurrentUser(item)
+      }
+    }
+
+  }, [number]);
+
+  const isUser =() => {
+    for (const item of users) {
+      if (number == item.phoneNumber) {
+        return true
+      }
+    }
+    return false
+  }
+
+  const logIn = () => {
+    dispatch(actions.setUser(currentUser))
+    StatusBar.setSatatusBarStyle('light')
+    navigation.navigate('Main')
+  } 
+ 
+  const throwError = () => {
+    setNumber("Invalid phone number");
   };
+
+ 
+
   return (
     <View style={styles.Register}>
       <Image source={require("../assets/blood.jpg")} style={styles.Image} />
@@ -25,12 +59,14 @@ function Register({navigation}) {
 
           <View style={styles.signin}>
             <Text style={{ fontSize: 30, fontWeight: "bold" }}>Sign in</Text>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Registration")}
+            >
               <View style={{ flexDirection: "row", alignItems: "center" }}>
                 <Text
                   style={{ paddingRight: 5, fontWeight: "bold", color: "blue" }}
                 >
-                  Help
+                  Register
                 </Text>
 
                 <Entypo name="help-with-circle" size={24} color="blue" />
@@ -46,11 +82,15 @@ function Register({navigation}) {
               placeholder="enter number"
               onChangeText={setNumber}
               value={number}
-              keyboardType="phone-pad"
             />
           </View>
           <View>
-            <TouchableOpacity style={{ paddingTop: 20 }} onPress={()=> navigation.navigate('Registration')}>
+            <TouchableOpacity
+              style={{ paddingTop: 20 }}
+              onPress={() => {
+                isUser() ? logIn() : throwError()
+              }}
+            >
               <View style={styles.Button}>
                 <Text
                   style={{

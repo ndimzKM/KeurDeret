@@ -12,7 +12,6 @@ import { Ionicons } from "@expo/vector-icons";
 
 const profileImage = {
   uri: "https://picsum.photos/200",
-  //uri: "https://api.multiavatar.com/Starcrasher.png",
 };
 
 const EditProfile = ({ navigation, route }) => {
@@ -134,7 +133,7 @@ const styles = StyleSheet.create({
   header: {
     backgroundColor: "#880808",
     height: 150,
-    paddingTop: 5
+    paddingTop: 5,
   },
   avatar: {
     alignItems: "center",

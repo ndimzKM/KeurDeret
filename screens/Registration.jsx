@@ -1,5 +1,5 @@
 import React from "react";
-import { SafeAreaView, View, Text} from "react-native";
+import { View, Text} from "react-native";
 import COLORS from "../colors/colors";
 import Button from "../components/Button";
 import DetailInput from "../components/DetailInput";
@@ -7,10 +7,6 @@ import DetailInput from "../components/DetailInput";
 const Registration = ({ navigation }) => {
   return (
     <View style={{ backgroundColor: COLORS.white, flex: 1, paddingHorizontal: 10 }}>
-      {/* <Image
-        style={style.image}
-        source={require("../blood-donation_istock.jpg")}
-      /> */}
       <Text style={{ color: COLORS.black, fontSize: 40, fontWeight: "bold" }}>
         Registration
       </Text>

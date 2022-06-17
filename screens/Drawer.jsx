@@ -73,13 +73,13 @@ const DrawerContent = ({ props, navigation }) => {
             <Icon iconName="user" text="My Profile" />
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => navigation.navigate("Profile")}
+            // onPress={() => navigation.navigate("Profile")}
             style={{ borderTopWidth: 1, borderTopColor: "#F3F6F6" }}
           >
             <Icon iconName="question-circle" text="FAQ" />
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => navigation.navigate("Home")}
+            // onPress={() => navigation.navigate("Home")}
             style={{ borderTopWidth: 1, borderTopColor: "#F3F6F6" }}
           >
             <Icon iconName="exclamation-circle" text="About App" />
@@ -87,7 +87,7 @@ const DrawerContent = ({ props, navigation }) => {
         </View>
 
         <TouchableOpacity
-          onPress={() => navigation.navigate("Register")}
+          onPress={() => navigation.reset({routes: [{name: 'Register'}]})}
           
         >
           <Icon iconName="sign-out" text="Logout" />

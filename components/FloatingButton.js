@@ -1,18 +1,21 @@
 import React from "react";
-import { View, StyleSheet, TouchableOpacity } from "react-native";
+import { StyleSheet, TouchableOpacity } from "react-native";
 import { useDispatch } from "react-redux";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-import * as actions from '../redux/actions'
+import * as actions from "../redux/actions";
 
 const FloatingButton = () => {
   const dispatch = useDispatch();
 
   return (
-    <TouchableOpacity style={styles.float} onPress={() => dispatch(actions.showModal())}>
+    <TouchableOpacity
+      style={styles.float}
+      onPress={() => dispatch(actions.showModal())}
+    >
       <MaterialCommunityIcons
         name="water-plus-outline"
-        size={27}
+        size={35}
         color="#fff"
       />
     </TouchableOpacity>
@@ -21,12 +24,21 @@ const FloatingButton = () => {
 
 const styles = StyleSheet.create({
   float: {
-    paddingHorizontal: 8,
-    paddingVertical: 8,
-    backgroundColor: "#6e8cff",
+    padding: 10,
+    backgroundColor: "#D33F49",
     borderRadius: "50%",
     borderWidth: 3,
-    borderColor: "#DBE2FF",
+    borderColor: "#ECACB0",
+    marginTop: -37.5,
+    marginBottom: 10,
+    shadowColor: "#D33F49",
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 16,
+    elevation: 19,
   },
 });
 
