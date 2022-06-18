@@ -41,6 +41,7 @@ const DrawerContent = ({ props, navigation }) => {
         <TouchableOpacity
           onPress={() => {
             navigation.navigate("Home");
+            setStatusBarStyle("light");
           }}
         >
           <Icon iconName="home" text="Home" />
@@ -48,6 +49,7 @@ const DrawerContent = ({ props, navigation }) => {
         <TouchableOpacity
           onPress={() => {
             navigation.navigate("Settings");
+            setStatusBarStyle("dark");
           }}
           style={{ borderTopWidth: 1, borderTopColor: "#F3F6F6" }}
         >
@@ -56,6 +58,7 @@ const DrawerContent = ({ props, navigation }) => {
         <TouchableOpacity
           onPress={() => {
             navigation.navigate("Notification");
+            setStatusBarStyle("dark");
           }}
           style={{ borderTopWidth: 1, borderTopColor: "#F3F6F6" }}
         >
@@ -68,6 +71,7 @@ const DrawerContent = ({ props, navigation }) => {
           <TouchableOpacity
             onPress={() => {
               navigation.navigate("Profile");
+              setStatusBarStyle("dark");
             }}
             style={{ borderTopWidth: 1, borderTopColor: "#F3F6F6" }}
           >
