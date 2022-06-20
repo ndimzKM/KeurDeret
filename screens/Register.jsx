@@ -29,7 +29,7 @@ function Register({ navigation }) {
 
   }, [number]);
 
-  const isUser =() => {
+  const isUser = () => {
     for (const item of users) {
       if (number == item.phoneNumber) {
         return true
