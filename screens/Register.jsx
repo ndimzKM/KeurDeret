@@ -1,3 +1,4 @@
+import axios from "axios";
 import {
   StyleSheet,
   View,
@@ -8,7 +9,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { Entypo } from "@expo/vector-icons";
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../redux/actions";
 import { StatusBar, setStatusBarStyle } from "expo-status-bar";
@@ -23,36 +24,49 @@ function Register({ navigation }) {
   useEffect(() => {
     for (const item of users) {
       if (number == item.phoneNumber) {
-        setCurrentUser(item)
+        setCurrentUser(item);
       }
     }
-
   }, [number]);
 
   const isUser = () => {
     for (const item of users) {
       if (number == item.phoneNumber) {
-        return true
+        return true;
       }
     }
-    return false
-  }
+    return false;
+  };
 
   const logIn = () => {
-    dispatch(actions.setUser(currentUser))
-    setStatusBarStyle('light')
-    navigation.navigate('Main')
-  } 
- 
+    dispatch(actions.setUser(currentUser));
+    setStatusBarStyle("light");
+    const payload = {
+      phone: number,
+    };
+    axios
+      .post("http://localhost:5000/user/register/phone", payload, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
+    navigation.navigate("Main");
+  };
+
   const throwError = () => {
     setNumber("Invalid phone number");
   };
 
- 
-
   return (
     <View style={styles.Register}>
-    <StatusBar style="dark" />
+      <StatusBar style="dark" />
       <Image source={require("../assets/blood.jpg")} style={styles.Image} />
       <ScrollView>
         <View style={styles.contents}>
@@ -89,7 +103,7 @@ function Register({ navigation }) {
             <TouchableOpacity
               style={{ paddingTop: 20 }}
               onPress={() => {
-                isUser() ? logIn() : throwError()
+                isUser() ? logIn() : throwError();
               }}
             >
               <View style={styles.Button}>
