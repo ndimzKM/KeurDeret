@@ -5,6 +5,7 @@ import {
   TextInput,
   TouchableOpacity,
   ScrollView,
+  SafeAreaView,
 } from "react-native";
 import {
   Ionicons,
@@ -14,16 +15,18 @@ import {
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
 
+import {setStatusBarStyle} from 'expo-status-bar'
+
 function Settings({ navigation }) {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.content}>
         <View></View>
         <View>
           <Text style={{ fontSize: 20, fontWeight: "600" }}>Settings</Text>
           <Text style={{ fontSize: 13, color: "#b6b8b9" }}>@username</Text>
         </View>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
+        <TouchableOpacity onPress={() => {navigation.goBack(); setStatusBarStyle("light");} }>
           <Text style={{ fontSize: 17 }}>Done</Text>
         </TouchableOpacity>
       </View>
@@ -128,7 +131,7 @@ function Settings({ navigation }) {
           </TouchableOpacity>
         </TouchableOpacity>
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 }
 
