@@ -7,6 +7,7 @@ import {
   TextInput,
   ScrollView,
   TouchableOpacity,
+  ActivityIndicator,
 } from "react-native";
 import { Entypo } from "@expo/vector-icons";
 import { useState, useEffect } from "react";
@@ -16,10 +17,12 @@ import { StatusBar, setStatusBarStyle } from "expo-status-bar";
 
 function Register({ navigation }) {
   const users = useSelector((state) => state.users);
+  const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   const [number, setNumber] = useState(null);
   const [currentUser, setCurrentUser] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     for (const item of users) {
@@ -39,6 +42,7 @@ function Register({ navigation }) {
   };
 
   const logIn = () => {
+    setIsLoading(true);
     dispatch(actions.setUser(currentUser));
     setStatusBarStyle("light");
     const payload = {
@@ -51,13 +55,19 @@ function Register({ navigation }) {
         },
       })
       .then((response) => {
-        console.log(response);
+        const { data } = response;
+
+        dispatch(actions.setUser(data));
+
+        console.log(data);
+        console.log(response.status);
       })
       .catch((error) => {
         console.error(error);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
-
-    navigation.navigate("Main");
   };
 
   const throwError = () => {
@@ -66,65 +76,94 @@ function Register({ navigation }) {
 
   return (
     <View style={styles.Register}>
+      {isLoading && <Spinner />}
       <StatusBar style="dark" />
-      <Image source={require("../assets/blood.jpg")} style={styles.Image} />
-      <ScrollView>
-        <View style={styles.contents}>
-          <Text style={{ fontWeight: "bold" }}>Welcome to KeurDeret </Text>
+      {!isLoading && (
+        <>
+          <Image source={require("../assets/blood.jpg")} style={styles.Image} />
+          <ScrollView>
+            <View style={styles.contents}>
+              <Text style={{ fontWeight: "bold" }}>Welcome to KeurDeret </Text>
 
-          <View style={styles.signin}>
-            <Text style={{ fontSize: 30, fontWeight: "bold" }}>Sign in</Text>
-            <TouchableOpacity
-              onPress={() => navigation.navigate("Registration")}
-            >
-              <View style={{ flexDirection: "row", alignItems: "center" }}>
-                <Text
-                  style={{ paddingRight: 5, fontWeight: "bold", color: "blue" }}
-                >
-                  Register
-                </Text>
-
-                <Entypo name="help-with-circle" size={24} color="blue" />
-              </View>
-            </TouchableOpacity>
-          </View>
-          <View style={{ flexDirection: "column" }}>
-            <Text style={{ paddingBottom: 10, fontWeight: "bold" }}>
-              Phone Number
-            </Text>
-            <TextInput
-              style={styles.TextInput}
-              placeholder="enter number"
-              onChangeText={setNumber}
-              value={number}
-            />
-          </View>
-          <View>
-            <TouchableOpacity
-              style={{ paddingTop: 20 }}
-              onPress={() => {
-                isUser() ? logIn() : throwError();
-              }}
-            >
-              <View style={styles.Button}>
-                <Text
-                  style={{
-                    justifyContent: "center",
-                    color: "#fff",
-                    fontSize: 15,
-                    fontWeight: "bold",
-                  }}
-                >
+              <View style={styles.signin}>
+                <Text style={{ fontSize: 30, fontWeight: "bold" }}>
                   Sign in
                 </Text>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("Registration")}
+                >
+                  <View style={{ flexDirection: "row", alignItems: "center" }}>
+                    <Text
+                      style={{
+                        paddingRight: 5,
+                        fontWeight: "bold",
+                        color: "blue",
+                      }}
+                    >
+                      Register
+                    </Text>
+
+                    <Entypo name="help-with-circle" size={24} color="blue" />
+                  </View>
+                </TouchableOpacity>
               </View>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </ScrollView>
+              <View style={{ flexDirection: "column" }}>
+                <Text style={{ paddingBottom: 10, fontWeight: "bold" }}>
+                  Phone Number
+                </Text>
+                <TextInput
+                  style={styles.TextInput}
+                  placeholder="enter number"
+                  onChangeText={setNumber}
+                  value={number}
+                />
+              </View>
+              <View>
+                <TouchableOpacity
+                  style={{ paddingTop: 20 }}
+                  onPress={() => {
+                    logIn();
+                  }}
+                >
+                  <View style={styles.Button}>
+                    <Text
+                      style={{
+                        justifyContent: "center",
+                        color: "#fff",
+                        fontSize: 15,
+                        fontWeight: "bold",
+                      }}
+                    >
+                      Sign in
+                    </Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </ScrollView>
+        </>
+      )}
     </View>
   );
 }
+
+const Spinner = () => {
+  return (
+    <View
+      style={{
+        flex: 1,
+        zIndex: 3,
+        backgroundColor: "#fff",
+        height: "100%",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <ActivityIndicator size="large" />
+    </View>
+  );
+};
+
 const styles = StyleSheet.create({
   Register: {
     flex: 1,
