@@ -25,7 +25,7 @@ import Notification from "./screens/Notification";
 import Test from "./screens/Test";
 import Settings from "./screens/Settings";
 import Home from "./screens/Home";
-import Registration from "./screens/Registration";
+import VerifyAccount from "./screens/VerifyAccount";
 import DrawerContent from "./screens/Drawer";
 
 // store
@@ -77,6 +77,7 @@ export default function App() {
           <Stack.Navigator initialRouteName="Register" screenOptions={{ headerShown: false}}>
             <Stack.Screen name="Register" component={Register} />
             <Stack.Screen name="Registration" component={Test} />
+            <Stack.Screen name="Verification" component={VerifyAccount} />
             <Stack.Screen name="Main" component={Main} />
           </Stack.Navigator>
         </NavigationContainer>

@@ -21,44 +21,27 @@ function Register({ navigation }) {
   const dispatch = useDispatch();
 
   const [number, setNumber] = useState(null);
-  const [currentUser, setCurrentUser] = useState({});
   const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    for (const item of users) {
-      if (number == item.phoneNumber) {
-        setCurrentUser(item);
-      }
-    }
-  }, [number]);
-
-  const isUser = () => {
-    for (const item of users) {
-      if (number == item.phoneNumber) {
-        return true;
-      }
-    }
-    return false;
-  };
+  const [phone, setPhone] = useState(null);
 
   const logIn = () => {
     setIsLoading(true);
-    dispatch(actions.setUser(currentUser));
-    setStatusBarStyle("light");
-    const payload = {
-      phone: number,
-    };
+
     axios
-      .post("http://localhost:5000/user/register/phone", payload, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
+      .post(
+      `http://192.168.0.117:5000/user/register/phone`,
+        { phone: number },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
       .then((response) => {
         const { data } = response;
-
-        dispatch(actions.setUser(data));
-
+        if (response.status === 201) {
+          navigation.navigate('Verification')
+        }
         console.log(data);
         console.log(response.status);
       })
@@ -68,10 +51,6 @@ function Register({ navigation }) {
       .finally(() => {
         setIsLoading(false);
       });
-  };
-
-  const throwError = () => {
-    setNumber("Invalid phone number");
   };
 
   return (

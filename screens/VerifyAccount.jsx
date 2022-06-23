@@ -11,7 +11,7 @@ const VerifyAccount = () => {
   return (
     <View>
       <Image
-        source={require("./assets/verify.png")}
+        source={require("../assets/verify.png")}
         style={{ width: 100, height: 100, }}
       />
       <Text>Verification</Text>
