@@ -1,5 +1,5 @@
 // external imports
-import { StyleSheet, SafeAreaView, Platform, View} from "react-native";
+import { StyleSheet, SafeAreaView, Platform, View } from "react-native";
 import { StatusBar } from "expo-status-bar";
 
 // redux
@@ -69,12 +69,12 @@ const Main = () => {
 export default function App() {
   return (
     <Provider store={store}>
-      <View
-        style={{ flex: 1, paddingTop: Platform.OS === "android" ? 40 : 0 }}
-      >
-
+      <View style={{ flex: 1, paddingTop: Platform.OS === "android" ? 40 : 0 }}>
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="Register" screenOptions={{ headerShown: false}}>
+          <Stack.Navigator
+            initialRouteName="Register"
+            screenOptions={{ headerShown: false }}
+          >
             <Stack.Screen name="Register" component={Register} />
             <Stack.Screen name="Registration" component={Test} />
             <Stack.Screen name="Verification" component={VerifyAccount} />
