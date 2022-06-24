@@ -1,12 +1,21 @@
-import React from "react";
-import { View, Text} from "react-native";
+import React, { useState } from "react";
+import { View, Text, SafeAreaView } from "react-native";
 import COLORS from "../colors/colors";
 import Button from "../components/Button";
 import DetailInput from "../components/DetailInput";
 
 const Registration = ({ navigation }) => {
+  const [inputFields, setInputFields] = useState({
+    firstName: "",
+    lastName: "",
+    address: "",
+    phoneNumber: "",
+    bloodGroup: "",
+  });
   return (
-    <View style={{ backgroundColor: COLORS.white, flex: 1, paddingHorizontal: 10 }}>
+    <SafeAreaView
+      style={{ backgroundColor: COLORS.white, flex: 1, paddingHorizontal: 10 }}
+    >
       <Text style={{ color: COLORS.black, fontSize: 40, fontWeight: "bold" }}>
         Registration
       </Text>
@@ -16,26 +25,38 @@ const Registration = ({ navigation }) => {
       <View style={{ marginVertical: 20 }}>
         <DetailInput
           placeHolder="Enter your full name"
-          iconName="account-outline"
-          label="Full Name"
+          inputType="firstName"
+          inputFields={inputFields}
+          setInputFields={setInputFields}
         />
         <DetailInput
           placeHolder="Enter your phone number"
-          iconName="phone-outline"
-          label="Phone Number"
+          inputType="lastName"
+          inputFields={inputFields}
+          setInputFields={setInputFields}
         />
         <DetailInput
           placeHolder="Enter your email address"
-          iconName="email-outline"
-          label="Email"
+          inputType="address"
+          inputFields={inputFields}
+          setInputFields={setInputFields}
         />
         <DetailInput
           placeHolder="Enter your email password"
-          iconName="lock-outline"
-          label="Password"
-          password
+          inputType="phoneNumber"
+          inputFields={inputFields}
+          setInputFields={setInputFields}
         />
-        <Button title={"Register"} onPress={() => navigation.navigate('Main')}/>
+        <DetailInput
+          placeHolder="Enter your blood group"
+          inputType="bloodGroup"
+          inputFields={inputFields}
+          setInputFields={setInputFields}
+        />
+        <Button
+          title={"Register"}
+          onPress={() => navigation.navigate("Main")}
+        />
         <Text
           // to return to login screen on press
           onPress={() => navigation.navigate("Register")}
@@ -49,7 +70,7 @@ const Registration = ({ navigation }) => {
           Already have an account? Log in
         </Text>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 

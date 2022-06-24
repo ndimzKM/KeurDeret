@@ -4,16 +4,26 @@ import COLORS from "../colors/colors";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const DetailInput = ({
-  label,
-  iconName,
   error,
-  password,
+  inputType,
+  inputFields,
+  setInputFields,
   onFocus = () => {},
   ...props
 }) => {
   const [whenFocused, setWhenFocused] = React.useState(false);
-  //   use state to hide password with the password props
-  const [hidePassword, setHidePassword] = React.useState(password);
+  const [input, setInput] = useState("");
+  const handleChange = (e) => {
+    console.log("Changed");
+    setInput(e);
+    // setInputFields((prevState) => {
+    //   return {
+    //     ...prevState,
+    //     [inputType]: e,
+    //   };
+    // });
+  };
+
   return (
     <View style={{ marginBottom: 10 }}>
       <Text style={styles.label}>{label}</Text>
@@ -37,8 +47,9 @@ const DetailInput = ({
           marginRight={10}
         />
         <TextInput
-          secureTextEntry={hidePassword}
           autoCorrect={false}
+          value={input}
+          onChangeText={handleChange}
           onFocus={() => {
             onFocus();
             setWhenFocused(true);

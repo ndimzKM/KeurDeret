@@ -23,6 +23,7 @@ function Register({ navigation }) {
   const [number, setNumber] = useState(null);
   const [currentUser, setCurrentUser] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const [errors, setError] = useState({});
 
   useEffect(() => {
     for (const item of users) {
@@ -43,7 +44,7 @@ function Register({ navigation }) {
 
   const logIn = () => {
     setIsLoading(true);
-    dispatch(actions.setUser(currentUser));
+
     setStatusBarStyle("light");
     const payload = {
       phone: number,
@@ -63,10 +64,16 @@ function Register({ navigation }) {
         console.log(response.status);
       })
       .catch((error) => {
-        console.error(error);
+        console.log(error.response.status);
+        if (error.response.status == 422) {
+          setError({ status: 422, message: "Phone number is required" });
+        }
       })
       .finally(() => {
         setIsLoading(false);
+        setTimeout(() => {
+          setError({});
+        }, 5000);
       });
   };
 
@@ -76,9 +83,9 @@ function Register({ navigation }) {
 
   return (
     <View style={styles.Register}>
-      {isLoading && <Spinner />}
-      <StatusBar style="dark" />
-      {!isLoading && (
+      {isLoading ? (
+        <Spinner />
+      ) : (
         <>
           <Image source={require("../assets/blood.jpg")} style={styles.Image} />
           <ScrollView>
@@ -111,6 +118,13 @@ function Register({ navigation }) {
                 <Text style={{ paddingBottom: 10, fontWeight: "bold" }}>
                   Phone Number
                 </Text>
+                {errors.status && (
+                  <Text
+                    style={{ color: "red", paddingBottom: 10, fontSize: 18 }}
+                  >
+                    {errors.message}
+                  </Text>
+                )}
                 <TextInput
                   style={styles.TextInput}
                   placeholder="enter number"
@@ -120,6 +134,7 @@ function Register({ navigation }) {
               </View>
               <View>
                 <TouchableOpacity
+                  disabled={number == null}
                   style={{ paddingTop: 20 }}
                   onPress={() => {
                     logIn();
@@ -143,6 +158,7 @@ function Register({ navigation }) {
           </ScrollView>
         </>
       )}
+      <StatusBar style="dark" />
     </View>
   );
 }
