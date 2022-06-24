@@ -21,6 +21,7 @@ function Register({ navigation }) {
   const dispatch = useDispatch();
 
   const [number, setNumber] = useState(null);
+  const [currentUser, setCurrentUser] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setError] = useState({});
 
@@ -44,27 +45,21 @@ function Register({ navigation }) {
   const logIn = () => {
     setIsLoading(true);
 
-
     setStatusBarStyle("light");
     const payload = {
       phone: number,
     };
-
     axios
-      .post(
-      `http://192.168.0.117:5000/user/register/phone`,
-        { phone: number },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
+      .post("http://localhost:5000/user/register/phone", payload, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
       .then((response) => {
         const { data } = response;
-        if (response.status === 201) {
-          navigation.navigate('Verification')
-        }
+
+        dispatch(actions.setUser(data));
+
         console.log(data);
         console.log(response.status);
       })
@@ -80,6 +75,10 @@ function Register({ navigation }) {
           setError({});
         }, 5000);
       });
+  };
+
+  const throwError = () => {
+    setNumber("Invalid phone number");
   };
 
   return (
