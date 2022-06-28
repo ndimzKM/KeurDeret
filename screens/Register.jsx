@@ -77,9 +77,11 @@ function Register({ navigation }) {
       });
   };
 
-  const throwError = () => {
-    setNumber("Invalid phone number");
-  };
+  useEffect(() => {
+    if (user.message) {
+      navigation.navigate("Verification");
+    }
+  }, [user]);
 
   return (
     <View style={styles.Register}>
@@ -134,7 +136,6 @@ function Register({ navigation }) {
               </View>
               <View>
                 <TouchableOpacity
-                  disabled={number == null}
                   style={{ paddingTop: 20 }}
                   onPress={() => {
                     logIn();
