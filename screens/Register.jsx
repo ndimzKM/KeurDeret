@@ -1,3 +1,4 @@
+import axios from "axios";
 import {
   StyleSheet,
   View,
@@ -5,71 +6,181 @@ import {
   Image,
   TextInput,
   ScrollView,
+  TouchableOpacity,
+  ActivityIndicator,
 } from "react-native";
 import { Entypo } from "@expo/vector-icons";
-import { TouchableOpacity } from "react-native";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import * as actions from "../redux/actions";
+import { StatusBar, setStatusBarStyle } from "expo-status-bar";
 
-function Register({navigation}) {
+function Register({ navigation }) {
+  const users = useSelector((state) => state.users);
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+
   const [number, setNumber] = useState(null);
-  const signin = () => {
-    setNumber(number);
-    console.log(number);
+  const [currentUser, setCurrentUser] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+  const [errors, setError] = useState({});
+
+  useEffect(() => {
+    for (const item of users) {
+      if (number == item.phoneNumber) {
+        setCurrentUser(item);
+      }
+    }
+  }, [number]);
+
+  const isUser = () => {
+    for (const item of users) {
+      if (number == item.phoneNumber) {
+        return true;
+      }
+    }
+    return false;
   };
+
+  const logIn = () => {
+    setIsLoading(true);
+
+    setStatusBarStyle("light");
+    const payload = {
+      phone: number,
+    };
+    axios
+      .post("http://localhost:5000/user/register/phone", payload, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        const { data } = response;
+
+        dispatch(actions.setUser(data));
+
+        console.log(data);
+        console.log(response.status);
+      })
+      .catch((error) => {
+        console.log(error.response.status);
+        if (error.response.status == 422) {
+          setError({ status: 422, message: "Phone number is required" });
+        }
+      })
+      .finally(() => {
+        setIsLoading(false);
+        setTimeout(() => {
+          setError({});
+        }, 5000);
+      });
+  };
+
+  useEffect(() => {
+    if (user.message) {
+      navigation.navigate("Verification");
+    }
+  }, [user]);
+
   return (
     <View style={styles.Register}>
-      <Image source={require("../assets/blood.jpg")} style={styles.Image} />
-      <ScrollView>
-        <View style={styles.contents}>
-          <Text style={{ fontWeight: "bold" }}>Welcome to KeurDeret </Text>
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <>
+          <Image source={require("../assets/blood.jpg")} style={styles.Image} />
+          <ScrollView>
+            <View style={styles.contents}>
+              <Text style={{ fontWeight: "bold" }}>Welcome to KeurDeret </Text>
 
-          <View style={styles.signin}>
-            <Text style={{ fontSize: 30, fontWeight: "bold" }}>Sign in</Text>
-            <TouchableOpacity>
-              <View style={{ flexDirection: "row", alignItems: "center" }}>
-                <Text
-                  style={{ paddingRight: 5, fontWeight: "bold", color: "blue" }}
-                >
-                  Help
-                </Text>
-
-                <Entypo name="help-with-circle" size={24} color="blue" />
-              </View>
-            </TouchableOpacity>
-          </View>
-          <View style={{ flexDirection: "column" }}>
-            <Text style={{ paddingBottom: 10, fontWeight: "bold" }}>
-              Phone Number
-            </Text>
-            <TextInput
-              style={styles.TextInput}
-              placeholder="enter number"
-              onChangeText={setNumber}
-              value={number}
-              keyboardType="phone-pad"
-            />
-          </View>
-          <View>
-            <TouchableOpacity style={{ paddingTop: 20 }} onPress={()=> navigation.navigate('Registration')}>
-              <View style={styles.Button}>
-                <Text
-                  style={{
-                    justifyContent: "center",
-                    color: "#fff",
-                    fontSize: 15,
-                    fontWeight: "bold",
-                  }}
-                >
+              <View style={styles.signin}>
+                <Text style={{ fontSize: 30, fontWeight: "bold" }}>
                   Sign in
                 </Text>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("Registration")}
+                >
+                  <View style={{ flexDirection: "row", alignItems: "center" }}>
+                    <Text
+                      style={{
+                        paddingRight: 5,
+                        fontWeight: "bold",
+                        color: "blue",
+                      }}
+                    >
+                      Register
+                    </Text>
+
+                    <Entypo name="help-with-circle" size={24} color="blue" />
+                  </View>
+                </TouchableOpacity>
               </View>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </ScrollView>
+              <View style={{ flexDirection: "column" }}>
+                <Text style={{ paddingBottom: 10, fontWeight: "bold" }}>
+                  Phone Number
+                </Text>
+                {errors.status && (
+                  <Text
+                    style={{ color: "red", paddingBottom: 10, fontSize: 18 }}
+                  >
+                    {errors.message}
+                  </Text>
+                )}
+                <TextInput
+                  style={styles.TextInput}
+                  placeholder="enter number"
+                  onChangeText={setNumber}
+                  value={number}
+                />
+              </View>
+              <View>
+                <TouchableOpacity
+                  style={{ paddingTop: 20 }}
+                  onPress={() => {
+                    logIn();
+                  }}
+                >
+                  <View style={styles.Button}>
+                    <Text
+                      style={{
+                        justifyContent: "center",
+                        color: "#fff",
+                        fontSize: 15,
+                        fontWeight: "bold",
+                      }}
+                    >
+                      Sign in
+                    </Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </ScrollView>
+        </>
+      )}
+      <StatusBar style="dark" />
     </View>
   );
 }
+
+const Spinner = () => {
+  return (
+    <View
+      style={{
+        flex: 1,
+        zIndex: 3,
+        backgroundColor: "#fff",
+        height: "100%",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <ActivityIndicator size="large" />
+    </View>
+  );
+};
+
 const styles = StyleSheet.create({
   Register: {
     flex: 1,

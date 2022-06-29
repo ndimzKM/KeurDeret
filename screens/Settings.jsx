@@ -1,11 +1,11 @@
 import {
   Text,
   View,
-  SafeAreaView,
   StyleSheet,
   TextInput,
   TouchableOpacity,
   ScrollView,
+  SafeAreaView,
 } from "react-native";
 import {
   Ionicons,
@@ -15,24 +15,29 @@ import {
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
 
-function Settings({navigation}) {
+import {setStatusBarStyle} from 'expo-status-bar'
+
+function Settings({ navigation }) {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.content}>
         <View></View>
         <View>
           <Text style={{ fontSize: 20, fontWeight: "600" }}>Settings</Text>
           <Text style={{ fontSize: 13, color: "#b6b8b9" }}>@username</Text>
         </View>
-        <TouchableOpacity onPress={()=> navigation.goBack()}>
+        <TouchableOpacity onPress={() => {navigation.goBack(); setStatusBarStyle("light");} }>
           <Text style={{ fontSize: 17 }}>Done</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.textinput}>
         <TextInput placeholder="Search Settings" />
       </View>
-        
-      <ScrollView style={{ marginTop: 20, marginHorizontal: 10 }} showsVerticalScrollIndicator={false} >
+
+      <ScrollView
+        style={{ marginTop: 20, marginHorizontal: 10 }}
+        showsVerticalScrollIndicator={false}
+      >
         <TouchableOpacity style={styles.thetop}>
           <Ionicons name="person-outline" size={19} color="#1e3864" />
           <View style={styles.child}>
@@ -126,7 +131,7 @@ function Settings({navigation}) {
           </TouchableOpacity>
         </TouchableOpacity>
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -138,7 +143,7 @@ const styles = StyleSheet.create({
   },
   thetop: {
     flexDirection: "row",
-    justifyContent: 'space-between',
+    justifyContent: "space-between",
     marginVertical: 15,
     alignItems: "center",
     flex: 1,
@@ -161,8 +166,8 @@ const styles = StyleSheet.create({
   },
 
   child: {
-    flex:1,
-    marginHorizontal: 10
+    flex: 1,
+    marginHorizontal: 10,
   },
 });
 export default Settings;

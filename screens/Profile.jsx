@@ -7,9 +7,7 @@ import {
   ScrollView,
 } from "react-native";
 import {
-  AntDesign,
   MaterialCommunityIcons,
-  Fontisto,
   EvilIcons,
   Ionicons,
   Feather,
@@ -18,7 +16,6 @@ import {
 
 const profileImage = {
   uri: "https://picsum.photos/200",
-  //uri: "https://api.multiavatar.com/Starcrasher.png",
 };
 
 const Profile = ({ navigation }) => {

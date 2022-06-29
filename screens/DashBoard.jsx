@@ -15,9 +15,15 @@ import {
   Ionicons,
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
+import { useSelector } from "react-redux";
 
 function DashBoard() {
+
+  const currentUser = useSelector((state) => state.user);
+
   return (
+
+    
     <SafeAreaView style={styles.container}>
       <ScrollView>
         <View style={styles.TopIcons}>
@@ -328,6 +334,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     paddingTop: 10,
+
   },
 });
 

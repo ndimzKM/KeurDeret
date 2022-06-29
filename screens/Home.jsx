@@ -1,5 +1,7 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
+import React from "react";
+
+import { useSelector, useDispatch } from "react-redux";
 
 import {
   StyleSheet,
@@ -18,35 +20,36 @@ import {
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
 import BottomNav from "../components/BottomNav";
-import FloatingButton from "../components/FloatingButton";
 import RequestModal from "../components/RequestModal";
-
 export default function Home({ navigation }) {
-  const [modalVisible, setModalVisible] = useState(true);
+  const users = useSelector((state) => state.users);
+  const currentUser = useSelector((state) => state.user);
+  
   return (
-    <View style={{ flex: 1, backgroundColor: "#fff", position: "relative" }}>
-      <RequestModal/>
-
+    <View style={{ flex: 1, backgroundColor: "#000", paddingTop: 25 }}>
+      <RequestModal />
       <ScrollView
-        contentContainerStyle={{ paddingBottom: 30, backgroundColor: "#fff" }}
+        style={{ borderRadius: 10, margin: 5, backgroundColor: "#fff" }}
+        contentContainerStyle={{ paddingBottom: 30 }}
         showsVerticalScrollIndicator={false}
       >
         <View style={styles.container}>
           {/* header component */}
           <View style={styles.header}>
             <View style={{ flex: 1, justifyContent: "space-evenly" }}>
-              <Text style={styles.headerTitle}>Hi! Sundiata keita</Text>
+              <Text style={styles.headerTitle}>
+                Hi! {currentUser.firstName} {currentUser.lastName}
+              </Text>
               <Text style={styles.headerSub}>
                 Will you want to donate blood!
               </Text>
             </View>
-            <TouchableOpacity onPress={()=> navigation.navigate('DashBoard')}>
-            <Image
-              source={require("../assets/sundi.jpeg")}
-              style={styles.thumbnail}
-            />
+            <TouchableOpacity onPress={() => navigation.navigate("DashBoard")}>
+              <Image
+                source={{ uri: currentUser.photo }}
+                style={styles.thumbnail}
+              />
             </TouchableOpacity>
-            
           </View>
 
           {/* search component */}
@@ -104,7 +107,7 @@ export default function Home({ navigation }) {
 
             <View style={styles.summaryBottom}>
               <View style={{ alignItems: "center", justifyContent: "center" }}>
-                <TouchableOpacity style={styles.summaryBottomIcons}>
+                <TouchableOpacity style={styles.summaryBottomIcons} onPress={() => console.log(currentUser)}>
                   <Fontisto name="blood-test" size={24} color="#E6A819" />
                 </TouchableOpacity>
                 <Text style={{ color: "#eee" }}>Patients</Text>
@@ -118,7 +121,7 @@ export default function Home({ navigation }) {
               </View>
 
               <View style={{ alignItems: "center", justifyContent: "center" }}>
-                <TouchableOpacity style={styles.summaryBottomIcons}>
+                <TouchableOpacity style={styles.summaryBottomIcons} >
                   <MaterialCommunityIcons
                     name="heart-pulse"
                     size={24}
@@ -173,7 +176,54 @@ export default function Home({ navigation }) {
         </View>
 
         {/* message Chating */}
-        <View style={styles.donor}>
+
+        {users
+          .filter((user) => user.firstName !== currentUser.firstName)
+          .map((user) => (
+            <View style={styles.donor} key={user.id}>
+              <View style={styles.donorHeader}>
+                <Image source={{ uri: user.photo }} style={styles.thumbnail} />
+                <View style={{ flex: 1, marginStart: 10 }}>
+                  <Text style={{ fontSize: 18, marginBottom: 5 }}>
+                    {user.firstName} {user.lastName}
+                  </Text>
+                  <Text style={{ color: "#888" }}>Update, 23 minutes ago</Text>
+                </View>
+                <View style={{ backgroundColor: "#DBE2FF", borderRadius: 5 }}>
+                  <Entypo name="typing" size={30} color="#6e8cff" />
+                </View>
+              </View>
+
+              <View
+                style={{ flexDirection: "row", marginLeft: 60, marginTop: 10 }}
+              >
+                <MaterialIcons name="location-pin" size={16} color="red" />
+                <View style={{ marginLeft: 15 }}>
+                  <Text style={{}}>Hospital Location</Text>
+                  <Text style={{ color: "#888", marginTop: 4 }}>
+                    Westfield Clinic - KMC{" "}
+                  </Text>
+                  <Text style={{ color: "#888", marginTop: 4 }}>
+                    16 in {user.address}
+                  </Text>
+                </View>
+              </View>
+
+              <View
+                style={{ flexDirection: "row", marginLeft: 60, marginTop: 10 }}
+              >
+                <MaterialIcons name="event-note" size={16} color="#6e8cff" />
+                <View style={{ marginLeft: 15 }}>
+                  <Text>Blood Type</Text>
+                  <Text style={{ color: "#888", marginTop: 4 }}>
+                    {user.bloodGroup}
+                  </Text>
+                </View>
+              </View>
+            </View>
+          ))}
+
+        {/* <View style={styles.donor}>
           <View style={styles.donorHeader}>
             <Image
               source={require("../assets/sundi.jpeg")}
@@ -210,50 +260,11 @@ export default function Home({ navigation }) {
               <Text style={{ color: "#888", marginTop: 4 }}>A</Text>
             </View>
           </View>
-        </View>
-
-        <View style={styles.donor}>
-          <View style={styles.donorHeader}>
-            <Image
-              source={require("../assets/sundi.jpeg")}
-              style={styles.thumbnail}
-            />
-            <View style={{ flex: 1, marginStart: 10 }}>
-              <Text style={{ fontSize: 18, marginBottom: 5 }}>
-                Sundiata keita
-              </Text>
-              <Text style={{ color: "#888" }}>Update, 23 minutes ago</Text>
-            </View>
-            <View style={{ backgroundColor: "#DBE2FF", borderRadius: 5 }}>
-              <Entypo name="typing" size={30} color="#6e8cff" />
-            </View>
-          </View>
-
-          <View style={{ flexDirection: "row", marginLeft: 60, marginTop: 10 }}>
-            <MaterialIcons name="location-pin" size={16} color="red" />
-            <View style={{ marginLeft: 15 }}>
-              <Text style={{}}>Hospital Location</Text>
-              <Text style={{ color: "#888", marginTop: 4 }}>
-                Rumah kanifing junstion badala{" "}
-              </Text>
-              <Text style={{ color: "#888", marginTop: 4 }}>
-                16 in kanifing{" "}
-              </Text>
-            </View>
-          </View>
-
-          <View style={{ flexDirection: "row", marginLeft: 60, marginTop: 10 }}>
-            <MaterialIcons name="event-note" size={16} color="#6e8cff" />
-            <View style={{ marginLeft: 15 }}>
-              <Text>Blood Type</Text>
-              <Text style={{ color: "#888", marginTop: 4 }}>A</Text>
-            </View>
-          </View>
-        </View>
+        </View> */}
       </ScrollView>
       {/* <FloatingButton/> */}
 
-      <BottomNav navigation={navigation} setModalVisible={setModalVisible} />
+      <BottomNav navigation={navigation} />
     </View>
   );
 }

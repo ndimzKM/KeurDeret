@@ -14,8 +14,6 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 
 // ui-kitten UI Library
-import * as eva from "@eva-design/eva";
-import { ApplicationProvider } from "@ui-kitten/components";
 
 // local imports
 import rootReducer from "./redux/reducers";
@@ -24,23 +22,11 @@ import DashBoard from "./screens/DashBoard";
 import Profile from "./screens/Profile";
 import EditProfile from "./screens/EditProfile";
 import Notification from "./screens/Notification";
-import Login from "./screens/Login";
+import Test from "./screens/Test";
 import Settings from "./screens/Settings";
 import Home from "./screens/Home";
-import Registration from "./screens/Registration";
+import VerifyAccount from "./screens/VerifyAccount";
 import DrawerContent from "./screens/Drawer";
-import RequestModal from "./components/RequestModal";
-
-import {
-  MaterialIcons,
-  Entypo,
-  FontAwesome,
-  Ionicons,
-  AntDesign,
-  Fontisto,
-  Octicons,
-  MaterialCommunityIcons,
-} from "@expo/vector-icons";
 
 // store
 const store = legacy_createStore(
@@ -72,7 +58,6 @@ const Main = () => {
     >
       <Drawer.Screen name="Home" component={Home} />
       <Drawer.Screen name="DashBoard" component={DashBoard} />
-      <Drawer.Screen name="Login" component={Login} />
       <Drawer.Screen name="Notification" component={Notification} />
       <Drawer.Screen name="Profile" component={Profile} />
       <Drawer.Screen name="EditProfile" component={EditProfile} />
@@ -84,22 +69,21 @@ const Main = () => {
 export default function App() {
   return (
     <Provider store={store}>
-      <SafeAreaView
-        style={{ flex: 1, paddingTop: Platform.OS === "android" ? 40 : 0 }}
-      >
+      <View style={{ flex: 1, paddingTop: Platform.OS === "android" ? 40 : 0 }}>
         <NavigationContainer>
           <Stack.Navigator
             initialRouteName="Register"
             screenOptions={{ headerShown: false }}
           >
             <Stack.Screen name="Register" component={Register} />
-            <Stack.Screen name="Registration" component={Registration} />
+            <Stack.Screen name="Registration" component={Test} />
+            <Stack.Screen name="Verification" component={VerifyAccount} />
             <Stack.Screen name="Main" component={Main} />
           </Stack.Navigator>
         </NavigationContainer>
 
-        <StatusBar barStyle="dark-content" />
-      </SafeAreaView>
+        <StatusBar style="light" />
+      </View>
     </Provider>
   );
 }
