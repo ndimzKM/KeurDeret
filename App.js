@@ -58,7 +58,7 @@ const Main = () => {
   return (
     <Drawer.Navigator
       drawerContent={(props) => <DrawerContent {...props} />}
-      initialRouteName="Home"
+      initialRouteName="DashBoard"
       screenOptions={{
         headerShown: false,
         drawerType: "front",
@@ -88,7 +88,10 @@ export default function App() {
         style={{ flex: 1, paddingTop: Platform.OS === "android" ? 40 : 0 }}
       >
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="Register" screenOptions={{ headerShown: false}}>
+          <Stack.Navigator
+            initialRouteName="Register"
+            screenOptions={{ headerShown: false }}
+          >
             <Stack.Screen name="Register" component={Register} />
             <Stack.Screen name="Registration" component={Registration} />
             <Stack.Screen name="Main" component={Main} />
