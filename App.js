@@ -72,7 +72,7 @@ export default function App() {
       <View style={{ flex: 1, paddingTop: Platform.OS === "android" ? 40 : 0 }}>
         <NavigationContainer>
           <Stack.Navigator
-            initialRouteName="Register"
+            initialRouteName="Main"
             screenOptions={{ headerShown: false }}
           >
             <Stack.Screen name="Register" component={Register} />
@@ -81,8 +81,6 @@ export default function App() {
             <Stack.Screen name="Main" component={Main} />
           </Stack.Navigator>
         </NavigationContainer>
-
-        <StatusBar style="light" />
       </View>
     </Provider>
   );
@@ -91,7 +89,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
   },
