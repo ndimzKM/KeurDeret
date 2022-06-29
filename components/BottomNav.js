@@ -25,7 +25,7 @@ const BottomNav = ({ navigation }) => {
           <MaterialCommunityIcons
             name="menu"
             size={24}
-            color="#d0d0de"
+            color="#6e8cff"
             style={{ marginRight: 15 }}
           />
         </TouchableOpacity>
@@ -43,8 +43,10 @@ const styles = StyleSheet.create({
   },   
 
   main: {
-backgroundColor: '#000'
+    backgroundColor: '#ddd'
   }
+
+
 });
 
 export default BottomNav;

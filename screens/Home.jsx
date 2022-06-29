@@ -26,10 +26,11 @@ export default function Home({ navigation }) {
   const currentUser = useSelector((state) => state.user);
   
   return (
-    <View style={{ flex: 1, backgroundColor: "#000", paddingTop: 25 }}>
+    <View style={{ flex: 1, paddingTop: 25 }}>
       <RequestModal />
+      <StatusBar style="dark"/>
       <ScrollView
-        style={{ borderRadius: 10, margin: 5, backgroundColor: "#fff" }}
+        style={{borderRadius: 10, margin: 5 }}
         contentContainerStyle={{ paddingBottom: 30 }}
         showsVerticalScrollIndicator={false}
       >
@@ -65,75 +66,6 @@ export default function Home({ navigation }) {
             </TouchableOpacity>
           </View>
 
-          {/* summary component */}
-          <View style={styles.summary}>
-            {/* summaryTop */}
-            <View style={styles.summaryTop}>
-              <MaterialIcons name="event-note" size={16} color="#6e8cff" />
-
-              <View
-                style={{
-                  flexDirection: "row",
-                  marginEnd: 10,
-                  marginStart: 10,
-                  alignItems: "center",
-                }}
-              >
-                <Text style={{ color: "#888" }}>group. </Text>
-                <Text style={{ fontSize: 16 }}>A</Text>
-              </View>
-
-              <View
-                style={{
-                  flexDirection: "row",
-                  marginEnd: 10,
-                  alignItems: "center",
-                }}
-              >
-                <Text style={{ color: "#888" }}>age. </Text>
-                <Text style={{ fontSize: 16 }}>18 years</Text>
-              </View>
-              <View
-                style={{
-                  flexDirection: "row",
-                  marginEnd: 10,
-                  alignItems: "center",
-                }}
-              >
-                <Text style={{ color: "#888" }}>weight. </Text>
-                <Text style={{ fontSize: 16 }}>50kg</Text>
-              </View>
-            </View>
-
-            <View style={styles.summaryBottom}>
-              <View style={{ alignItems: "center", justifyContent: "center" }}>
-                <TouchableOpacity style={styles.summaryBottomIcons} onPress={() => console.log(currentUser)}>
-                  <Fontisto name="blood-test" size={24} color="#E6A819" />
-                </TouchableOpacity>
-                <Text style={{ color: "#eee" }}>Patients</Text>
-              </View>
-
-              <View style={{ alignItems: "center", justifyContent: "center" }}>
-                <TouchableOpacity style={styles.summaryBottomIcons}>
-                  <Fontisto name="blood-drop" size={24} color="#8eadff" />
-                </TouchableOpacity>
-                <Text style={{ color: "#eee" }}>Donors</Text>
-              </View>
-
-              <View style={{ alignItems: "center", justifyContent: "center" }}>
-                <TouchableOpacity style={styles.summaryBottomIcons} >
-                  <MaterialCommunityIcons
-                    name="heart-pulse"
-                    size={24}
-                    color="red"
-                  />
-                </TouchableOpacity>
-                <Text style={{ color: "#eee" }}>Medical</Text>
-              </View>
-            </View>
-          </View>
-
-          <StatusBar style="auto" />
         </View>
 
         {/* the body */}
@@ -223,47 +155,7 @@ export default function Home({ navigation }) {
             </View>
           ))}
 
-        {/* <View style={styles.donor}>
-          <View style={styles.donorHeader}>
-            <Image
-              source={require("../assets/sundi.jpeg")}
-              style={styles.thumbnail}
-            />
-            <View style={{ flex: 1, marginStart: 10 }}>
-              <Text style={{ fontSize: 18, marginBottom: 5 }}>
-                Sundiata keita
-              </Text>
-              <Text style={{ color: "#888" }}>Update, 23 minutes ago</Text>
-            </View>
-            <View style={{ backgroundColor: "#DBE2FF", borderRadius: 5 }}>
-              <Entypo name="typing" size={30} color="#6e8cff" />
-            </View>
-          </View>
-
-          <View style={{ flexDirection: "row", marginLeft: 60, marginTop: 10 }}>
-            <MaterialIcons name="location-pin" size={16} color="red" />
-            <View style={{ marginLeft: 15 }}>
-              <Text style={{}}>Hospital Location</Text>
-              <Text style={{ color: "#888", marginTop: 4 }}>
-                Rumah kanifing junstion badala{" "}
-              </Text>
-              <Text style={{ color: "#888", marginTop: 4 }}>
-                16 in kanifing{" "}
-              </Text>
-            </View>
-          </View>
-
-          <View style={{ flexDirection: "row", marginLeft: 60, marginTop: 10 }}>
-            <MaterialIcons name="event-note" size={16} color="#6e8cff" />
-            <View style={{ marginLeft: 15 }}>
-              <Text>Blood Type</Text>
-              <Text style={{ color: "#888", marginTop: 4 }}>A</Text>
-            </View>
-          </View>
-        </View> */}
       </ScrollView>
-      {/* <FloatingButton/> */}
-
       <BottomNav navigation={navigation} />
     </View>
   );
@@ -271,8 +163,9 @@ export default function Home({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#364355",
+    backgroundColor: "#ddd",
     padding: 10,
+    borderRadius: 10,
   },
 
   header: {
@@ -283,14 +176,14 @@ const styles = StyleSheet.create({
   },
 
   headerTitle: {
-    color: "white",
+    color: "#111",
     fontWeight: "bold",
     fontSize: 22,
   },
 
   headerSub: {
     fontWeight: "400",
-    color: "#ddd",
+    color: "#111",
   },
 
   search: {
@@ -301,19 +194,23 @@ const styles = StyleSheet.create({
   searchInput: {
     flex: 1,
     paddingStart: 15,
-    backgroundColor: "#5e6976",
-    borderRadius: 10,
-    fontSize: 16,
-    color: "white",
+    backgroundColor: "#aaa",
+    borderRadius: 25,
+    fontSize: 20,
+    borderWidth: 1,
+    borderColor: '#888'
+    // color: "#555",
   },
 
   searchButton: {
     backgroundColor: "#6e8cff",
-    borderRadius: 10,
+    borderRadius: 25,
     justifyContent: "center",
     alignItems: "center",
     marginStart: 15,
-    padding: 15,
+    padding: 12,
+    borderWidth: 1,
+    borderColor: '#888'
   },
 
   summary: {
@@ -357,7 +254,6 @@ const styles = StyleSheet.create({
   pins: {
     flex: 1,
     flexDirection: "row",
-    margin: 10,
     marginTop: 15,
   },
 
