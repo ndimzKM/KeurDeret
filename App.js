@@ -44,7 +44,7 @@ const Main = () => {
   return (
     <Drawer.Navigator
       drawerContent={(props) => <DrawerContent {...props} />}
-      initialRouteName="Home"
+      initialRouteName="DashBoard"
       screenOptions={{
         headerShown: false,
         drawerType: "front",
